@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0a0a0a">
+<title>Empire Syndicates — Automation &amp; Clipping Playbooks</title>
+<meta name="description" content="Fifteen free step-by-step blueprints for creators who clip — plus a private library of prompts, techniques and guides.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+/* Empire Syndicates — standalone file. Theme: BLACK + GRAY only. No bright colours. */
+:root{
+  color-scheme:dark;
+  --bg:#0a0a0a; --s1:#131313; --s2:#1a1a1a; --s3:#202020;
+  --line:#262626; --line2:#383838;
+  --ink:#f5f5f5; --ink2:#d4d4d4; --mute:#9d9d9d; --mute2:#737373;
+  --acc:#f5f5f5; --on:#0a0a0a;
+  --f:"Nunito","Baloo 2",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --fh:"Baloo 2","Nunito",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:ui-monospace,Menlo,Consolas,monospace;
+  box-sizing:border-box;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{margin:0;background:var(--bg);color:var(--ink);font:700 17px/1.6 var(--f);overflow-x:hidden;min-height:100vh;-webkit-font-smoothing:antialiased}
+[hidden]{display:none!important}
+a{color:inherit}
+button{font:inherit;cursor:pointer}
+.wrap{max-width:1080px;margin:0 auto;padding:0 22px 40px;position:relative;z-index:1}
+.bar{position:sticky;top:0;z-index:20;background:rgba(10,10,10,.94);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.barin{max-width:1080px;margin:0 auto;padding:0 22px;height:64px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:12px}
+.brand{grid-column:2;grid-row:1;justify-self:center;display:flex;align-items:center;gap:10px;font-family:var(--fh);font-weight:800;font-size:18px;letter-spacing:.01em;text-decoration:none;white-space:nowrap}
+.brand i{width:9px;height:9px;background:var(--acc);display:block}
+.links{grid-column:1;grid-row:1;justify-self:start}
+.right{grid-column:3;grid-row:1;justify-self:end}
+.links{display:none;gap:28px}
+.links a{color:var(--mute);text-decoration:none;font-size:15px}
+.links a:hover{color:var(--ink)}
+.right{display:flex;align-items:center;gap:10px;flex-shrink:0}
+#adminBtn{white-space:nowrap;flex-shrink:0}
+#adminBtn.on{color:var(--ink);border-color:var(--ink)}
+@media(max-width:680px){.barin{padding:0 16px;gap:8px}.brand{font-size:15px}.right{gap:8px}}
+.burger{width:40px;height:40px;border:1px solid var(--line);background:none;border-radius:6px;display:grid;place-content:center;gap:5px}
+.burger span{display:block;width:16px;height:1.5px;background:var(--ink)}
+.menu{border-top:1px solid var(--line);background:var(--bg);padding:8px 22px 16px;display:grid}
+.menu a{padding:14px 0;border-bottom:1px solid var(--line);text-decoration:none;color:var(--mute)}
+@media(min-width:760px){.links{display:flex}.burger,.menu{display:none!important}}
+.chip{font-size:13px;padding:5px 12px;border:1px solid var(--line2);border-radius:4px;color:var(--ink2);white-space:nowrap}
+.btn{display:inline-block;background:var(--acc);color:var(--on);border:0;border-radius:8px;padding:13px 24px;font-family:var(--fh);font-weight:800;text-decoration:none;text-align:center;transition:transform .2s ease,background .2s ease}
+.btn:hover{transform:scale(1.03)}
+.btn:hover{background:#fff}
+.btn:disabled{opacity:.5;cursor:wait}
+.ghost{background:transparent;color:var(--mute);border:1px solid var(--line);border-radius:6px;padding:6px 12px;font-size:14px}
+.ghost:hover{color:var(--ink);border-color:var(--mute)}
+input,select,textarea{font:inherit;background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:6px;padding:12px 14px;width:100%}
+textarea{min-height:150px;resize:vertical}
+input:focus-visible,select:focus-visible,textarea:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+
+.hero{display:grid;gap:40px;padding:72px 0 64px;align-items:center}
+.hero-bp .sub{max-width:38em}
+.hero-bp .cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px}
+.btn.ghostbtn{background:transparent;color:var(--ink);border:1px solid var(--line2)}
+@media(min-width:860px){.hero{grid-template-columns:1.25fr 1fr;gap:64px}}
+.rule{display:block;width:44px;height:2px;background:var(--acc);margin-bottom:22px}
+.lab{color:var(--mute);font-family:var(--fh);font-weight:800;font-size:14px;margin:0 0 14px;text-transform:uppercase;letter-spacing:.12em}
+h1{font:800 clamp(38px,7vw,62px)/1.05 var(--fh);letter-spacing:-.02em;margin:0 0 18px}
+h3{font-family:var(--fh);font-weight:800}
+.sub{color:var(--mute);font-size:17px;margin:0;max-width:30em}
+.keybox{padding:24px;background:var(--s1);border:1px solid var(--line);border-radius:10px}
+.keybox h2{font:600 18px var(--f);margin:0 0 4px}
+.keybox p.t{color:var(--mute);font-size:14px;margin:0 0 18px}
+.keybox label{display:block;color:var(--mute);font-size:13px;margin-bottom:6px}
+.row{display:flex;gap:10px}
+#k{font:600 16px var(--mono);letter-spacing:.1em;text-transform:uppercase}
+.keybox .row{flex-direction:column}
+.keybox .btn{width:100%}
+.msg{min-height:1.4em;margin:12px 0 0;font-size:14px;color:var(--mute)}
+.msg.ok{color:var(--ink)}
+.msg.bad{color:var(--ink2)}
+.adminhint{font-size:13px;color:var(--mute2);margin:14px 0 0}
+.adminhint button{background:none;border:0;color:var(--mute);text-decoration:underline;padding:0;font-size:13px}
+
+.sec{padding:56px 0 0;border-top:1px solid var(--line);margin-top:8px}
+h2.t{font:800 clamp(26px,4vw,34px)/1.12 var(--fh);letter-spacing:-.01em;margin:0 0 8px}
+.lead{color:var(--mute);margin:0 0 30px;max-width:38em}
+.glance{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.glance div{padding:22px 20px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);margin:0 -1px -1px 0}
+.glance b{display:block;font:700 24px var(--f);letter-spacing:-.02em}
+.glance span{color:var(--mute);font-size:14px}
+@media(min-width:760px){.glance{grid-template-columns:repeat(4,1fr)}}
+.list{border-top:1px solid var(--line)}
+.item{display:grid;gap:4px;padding:20px 0;border-bottom:1px solid var(--line)}
+.item h3{font:600 18px var(--f);margin:0}
+.item p{margin:0;color:var(--mute)}
+.item em{font-style:normal;color:var(--ink);font-size:14px}
+@media(min-width:760px){.item{grid-template-columns:220px 1fr auto;gap:32px;align-items:baseline}}
+.fine{color:var(--mute);font-size:14px;margin-top:18px}
+
+.tabs{display:flex;gap:26px;margin:28px 0 26px;border-bottom:1px solid var(--line);overflow-x:auto}
+.tabs button{background:none;border:0;border-bottom:2px solid transparent;color:var(--mute);padding:12px 0;font-weight:500;white-space:nowrap;margin-bottom:-1px}
+.tabs button.on{color:var(--ink);border-color:var(--acc)}
+.tools{display:flex;gap:10px;margin-bottom:14px}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chips button{background:none;color:var(--mute);border:1px solid var(--line);border-radius:6px;padding:7px 16px;font-size:14px}
+.chips button.on{border-color:var(--acc);color:var(--ink);background:var(--s2)}
+.card{background:var(--s1);border:1px solid var(--line);border-radius:10px;padding:20px;margin-bottom:12px;cursor:pointer}
+.card:hover{border-color:var(--line2)}
+.cardh{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.card h3{font:600 18px var(--f);margin:10px 0 8px}
+.card pre{white-space:pre-wrap;word-break:break-word;font:400 15px/1.65 var(--f);color:var(--ink2);margin:0}
+.card:not(.open) pre{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.tag{font-size:13px;color:var(--ink);font-weight:600}
+.empty{color:var(--mute);text-align:center;padding:40px 0}
+.panel{background:var(--s1);border:1px solid var(--line);border-radius:10px;padding:20px;margin-bottom:18px}
+.panel h2{font:600 18px var(--f);margin:0 0 14px}
+.grid{display:grid;grid-template-columns:1.2fr 1.6fr .7fr auto;gap:10px;align-items:end}
+.grid label{display:block;font-size:13px;color:var(--mute);margin-bottom:4px}
+.krow{display:flex;align-items:center;gap:10px;padding:12px 0;border-top:1px solid var(--line);flex-wrap:wrap}
+.krow code{font:600 15px var(--mono);letter-spacing:.06em;flex:1;min-width:200px}
+.krow small{color:var(--mute);min-width:140px}
+.st{font-size:14px;min-width:130px}
+@media(max-width:680px){.grid{grid-template-columns:1fr 1fr}.tools{flex-direction:column}}
+/* Phone top bar: brand + Admin + burger only. The key chip and Remove key
+   live in the Library view instead, or the bar overflows the 390px screen. */
+@media(max-width:680px){#leave,#chip,#adminBtn{display:none}}
+/* Phone reader: YOUR ROUTE must never stick over the step cards. */
+@media(max-width:859px){#reader .route{position:static}}
+/* Phone reader top bar: full title on its own row, toggle full-width below it. */
+@media(max-width:680px){
+  #reader .rtop{flex-wrap:wrap;padding:12px 0}
+  #reader .rtop .mid{flex:1;min-width:0;white-space:normal;overflow:visible;text-align:left;font-size:16px;line-height:1.35}
+  #reader .viewtoggle{flex:1 1 100%;margin-top:10px}
+  #reader .viewtoggle button{flex:1;padding:8px 10px}
+}
+
+/* Blueprints grid */
+.bp-grid{display:grid;gap:14px;grid-template-columns:1fr}
+@media(min-width:760px){.bp-grid{grid-template-columns:1fr 1fr}}
+.course{display:flex;flex-direction:column;gap:6px;padding:22px;background:var(--s1);border:1px solid var(--line);border-radius:10px;cursor:pointer}
+.course:hover{border-color:var(--mute)}
+.course h3{font:600 20px/1.25 var(--f);letter-spacing:-.01em;margin:8px 0 0}
+.course p{margin:0;color:var(--mute);font-size:15px}
+.ch{display:flex;gap:10px;align-items:center}
+.badge{font-size:12px;font-weight:700;background:var(--acc);color:var(--on);border-radius:4px;padding:2px 8px}
+.cat{color:var(--mute);font-size:14px}
+.cm{display:flex;justify-content:space-between;color:var(--mute);font-size:14px;margin-top:auto;padding-top:14px}
+
+/* Blueprint reader */
+#reader{position:fixed;inset:0;z-index:50;background:var(--bg);overflow-y:auto}
+.rin{max-width:1080px;margin:0 auto;padding:0 22px 90px}
+.rtop{position:sticky;top:0;z-index:2;background:var(--bg);display:flex;justify-content:space-between;align-items:center;gap:12px;padding:16px 0;border-bottom:1px solid var(--line);margin-bottom:8px}
+.rtop .mid{font-family:var(--fh);font-weight:700;font-size:15px;text-align:center;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.viewtoggle{display:flex;border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.viewtoggle button{background:none;border:0;color:var(--mute);padding:8px 14px;font-size:13px;font-weight:500}
+.viewtoggle button.on{background:var(--acc);color:var(--on)}
+.rhero{text-align:left;padding:40px 0 28px}
+.rhero .lab{margin-bottom:10px}
+.rhero h1{font-size:clamp(30px,5.5vw,44px)}
+.rmeta{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
+.pill{font-size:13px;padding:5px 12px;border:1px solid var(--line2);border-radius:4px;color:var(--ink2)}
+.rbody{display:grid;gap:32px}
+@media(min-width:860px){.rbody{grid-template-columns:260px 1fr}}
+.route{position:sticky;top:96px;align-self:start;border:1px solid var(--line);border-radius:10px;background:var(--s1);padding:20px}
+.route .rcount{display:flex;align-items:center;gap:14px;margin-bottom:16px}
+.rcircle{width:48px;height:48px;border-radius:50%;border:2px solid var(--acc);display:grid;place-items:center;font-weight:700;font-size:18px;flex:none}
+.route h4{font:700 13px var(--f);letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin:0 0 12px}
+.rlist{display:grid;gap:2px}
+.rlist button{display:flex;gap:10px;align-items:baseline;background:none;border:0;color:var(--mute);text-align:left;padding:8px 6px;font-size:14px;line-height:1.4;border-radius:6px;width:100%}
+.rlist button:hover{color:var(--ink);background:var(--s2)}
+.rlist button.done{color:var(--ink)}
+.rlist button.done .rn{color:var(--on);background:var(--acc);border-color:var(--acc)}
+.rlist button.cur{color:var(--ink);background:var(--s2)}
+.rn{flex:none;width:22px;height:22px;border-radius:50%;border:1px solid var(--line2);display:inline-grid;place-items:center;font-size:11px;font-weight:600}
+.steps{position:relative;padding-left:0}
+.step{position:relative;padding:0 0 14px 52px}
+.step::before{content:"";position:absolute;left:17px;top:38px;bottom:-6px;width:1px;background:var(--line2)}
+.step:last-child::before{display:none}
+.stepnum{position:absolute;left:0;top:14px;width:35px;height:35px;border-radius:50%;border:1px solid var(--line2);background:var(--s1);display:grid;place-items:center;font-weight:700;font-size:14px}
+.step.open .stepnum,.step.done .stepnum{background:var(--acc);color:var(--on);border-color:var(--acc)}
+.stepcard{background:var(--s1);border:1px solid var(--line);border-radius:10px;padding:18px 20px;cursor:pointer}
+.stepcard:hover{border-color:var(--line2)}
+.stepcard .typ{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink)}
+.stepcard h3{font:600 19px/1.3 var(--f);margin:6px 0 4px}
+.stepcard .prev{color:var(--mute);font-size:14px;margin:0}
+.stepcard .meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.stepcard .body{display:none;margin-top:16px;border-top:1px solid var(--line);padding-top:16px}
+.step.open .stepcard .body{display:block}
+.kp-h{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin:0 0 10px}
+.kp{display:flex;gap:10px;align-items:flex-start;padding:9px 0;border-top:1px solid var(--line);cursor:pointer;color:var(--ink2);font-size:15px}
+.kp:first-of-type{border-top:0}
+.kp input{width:18px;height:18px;padding:0;margin-top:3px;flex:none;accent-color:var(--acc)}
+.kp.done{color:var(--mute);text-decoration:line-through}
+.stepfoot{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:18px;flex-wrap:wrap}
+.stepfoot .hint{color:var(--mute2);font-size:13px}
+.doclesson{padding:28px 0;border-top:1px solid var(--line)}
+.doclesson small{color:var(--ink);font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.doclesson h3{font:600 22px/1.25 var(--f);letter-spacing:-.02em;margin:4px 0 12px}
+.doclesson ul{padding-left:20px;margin:0 0 16px}
+.doclesson li{color:var(--ink2);margin-bottom:8px}
+footer{color:var(--mute);font-size:14px;padding:30px 0 6px;border-top:1px solid var(--line);margin-top:60px}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}.bgglow i{animation:none!important}}
+/* Soft drifting glow background — black/gray only, very subtle. */
+.bgglow{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.bgglow i{position:absolute;width:60vw;height:60vw;border-radius:50%;filter:blur(90px);opacity:.55}
+.bgglow i:nth-child(1){background:#1d1d1d;top:-18%;left:-12%;animation:glow1 36s ease-in-out infinite alternate}
+.bgglow i:nth-child(2){background:#242424;bottom:-22%;right:-14%;animation:glow2 44s ease-in-out infinite alternate}
+.course{transition:transform .25s ease,border-color .25s ease}
+.course:hover{transform:scale(1.02)}
+@keyframes glow1{from{transform:translate(0,0) scale(1)}to{transform:translate(12vw,8vh) scale(1.15)}}
+@keyframes glow2{from{transform:translate(0,0) scale(1.12)}to{transform:translate(-10vw,-6vh) scale(1)}}
+/* Platform banner strip on top of each blueprint card. */
+.pban{display:flex;align-items:center;gap:9px;margin:-22px -22px 12px;padding:11px 22px;background:#202020;border-bottom:1px solid var(--line);border-radius:10px 10px 0 0;font-family:var(--fh);font-weight:800;font-size:14px;letter-spacing:.02em}
+.pban svg{width:19px;height:19px;flex:none}
+.pban .plogo{width:20px;height:20px;flex:none;display:grid;place-items:center;background:var(--acc);color:var(--on);border-radius:5px;font-size:15px;line-height:1}
+/* Scroll pop-up: headings pop word by word, cards pop as you swipe down. */
+.pop{opacity:0;transform:translateY(26px);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.7,.3,1.15)}
+.pop.in{opacity:1;transform:none}
+.pop .w{display:inline-block;opacity:0;transform:translateY(.5em);transition:opacity .45s ease,transform .45s cubic-bezier(.2,.7,.3,1.25)}
+.pop.in .w{opacity:1;transform:none}
+.popcard{opacity:0;transform:translateY(26px) scale(.98);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.7,.3,1.15),border-color .25s ease}
+.popcard.in{opacity:1;transform:none}
+.course.popcard.in:hover{transform:scale(1.02)}
+@media(prefers-reduced-motion:reduce){.pop,.pop .w,.popcard{opacity:1!important;transform:none!important;transition:none!important}}
+/* Language picker in the footer. */
+.langs{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 10px}
+.langs button{background:none;border:1px solid var(--line2);color:var(--mute);border-radius:20px;padding:7px 13px;font-size:13px;font-weight:700}
+.langs button.on{color:var(--ink);border-color:var(--ink);background:var(--s2)}
+/* Marquee ticker */
+.marq{overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:12px 0;margin-top:8px}
+.marq-in{display:flex;width:max-content;animation:marq 28s linear infinite}
+.marq span{font-family:var(--fh);font-weight:800;font-size:15px;letter-spacing:.08em;color:var(--mute);white-space:nowrap;padding:0 18px}
+.marq span b{color:var(--ink);font-weight:800}
+@keyframes marq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+/* Stats */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;padding:34px 0 8px}
+.stat{text-align:center;border:1px solid var(--line);border-radius:10px;background:var(--s1);padding:18px 8px}
+.stat b{display:block;font:800 clamp(26px,6vw,38px)/1.1 var(--fh)}
+.stat span{font-size:13px;color:var(--mute)}
+@media(max-width:560px){.stats{grid-template-columns:repeat(2,1fr)}}
+/* Quiz */
+.quiz{border:1px solid var(--line);border-radius:10px;background:var(--s1);padding:22px}
+.quiz .q{display:none}
+.quiz .q.on{display:block}
+.quiz .q h3{margin:0 0 4px}
+.quiz .opts{display:grid;gap:10px;margin-top:16px}
+.quiz .opts button{background:var(--s2);border:1px solid var(--line2);color:var(--ink);border-radius:8px;padding:13px 16px;font-size:15px;font-weight:700;text-align:left}
+.quiz .opts button:hover{border-color:var(--ink)}
+.quiz .qres{display:none}
+.quiz .qres.on{display:block}
+.quiz .qnav{margin-top:16px}
+.quiz .qres .mini{margin-top:14px}
+/* FAQ */
+.faq{border-top:1px solid var(--line)}
+.faq .fq{border-bottom:1px solid var(--line)}
+.faq .fq button{display:flex;justify-content:space-between;align-items:center;gap:14px;width:100%;background:none;border:0;color:var(--ink);padding:18px 2px;font-size:16px;font-weight:700;text-align:left}
+.faq .fq button .pm{flex:none;font-size:22px;color:var(--mute);font-weight:400;transition:transform .2s ease}
+.faq .fa{display:none;padding:0 2px 18px;color:var(--mute)}
+.faq .fq.open .fa{display:block}
+.faq .fq.open .pm{transform:rotate(45deg)}
+/* Compare */
+.cmp{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.cmp .col{border:1px solid var(--line);border-radius:10px;background:var(--s1);padding:20px}
+.cmp .col.hot{border-color:var(--ink);background:var(--s2)}
+.cmp h3{margin:0 0 4px}
+.cmp ul{list-style:none;margin:14px 0 0;padding:0;display:grid;gap:10px;color:var(--mute);font-size:15px}
+.cmp li b{color:var(--ink)}
+.cmp li .y{color:var(--ink);font-weight:700}
+.cmp li .n{opacity:.45}
+.cmp .btn{margin-top:16px}
+/* Pricing */
+.price{display:grid;gap:14px}
+@media(min-width:860px){.price{grid-template-columns:repeat(4,1fr)}}
+.pr{border:1px solid var(--line);border-radius:10px;background:var(--s1);padding:20px;display:flex;flex-direction:column;gap:8px}
+.pr.hot{border-color:var(--ink);background:var(--s2)}
+.pr .dur{font:800 22px/1.2 var(--fh)}
+.pr .pv{font-size:14px;color:var(--mute)}
+.pr .pv b{color:var(--ink);font-size:16px}
+.pr ul{list-style:none;margin:6px 0 0;padding:0;display:grid;gap:8px;color:var(--mute);font-size:14px;flex:1}
+.pr .btn{margin-top:12px}
+/* Discord */
+.dc{border:1px solid var(--line);border-radius:10px;background:var(--s1);padding:26px 22px;text-align:center}
+.dc svg{width:44px;height:44px;margin-bottom:10px}
+.dc h2{margin:0 0 8px}
+.dc p{color:var(--mute);margin:0 0 18px}
+/* Results */
+.reslist{display:grid;gap:14px}
+.res{border:1px solid var(--line);border-radius:10px;background:var(--s1);padding:20px}
+.res h3{margin:0 0 6px}
+.res p{margin:0;color:var(--mute)}
+@media(prefers-reduced-motion:reduce){.marq-in{animation:none!important}}
+/* v7: continue + badges */
+.cont{display:flex;justify-content:space-between;align-items:center;gap:16px;background:var(--s1);border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin:22px 0 0}
+.cont h3{font:700 19px/1.3 var(--fh);margin:6px 0 2px}
+.bdgwrap{margin:16px 0 0}
+.bdgwrap .lab{margin-bottom:10px}
+.badges{display:flex;gap:8px;flex-wrap:wrap}
+.bdg{border:1px solid var(--line);border-radius:999px;padding:7px 13px;font-size:13px;font-weight:700;color:var(--mute);background:var(--s1)}
+.bdg.on{border-color:var(--acc);color:var(--on);background:var(--acc)}
+/* v7: blueprint search */
+.bpsearch{width:100%;margin-bottom:14px}
+/* v7: what's new */
+.nwlist{display:grid;gap:10px}
+.nw{display:flex;align-items:center;gap:12px;background:var(--s1);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.nw h3{font:700 16px/1.3 var(--fh);margin:0}
+/* v7: how a key works */
+.how{display:grid;gap:12px}
+@media(min-width:700px){.how{grid-template-columns:1fr 1fr 1fr}}
+.howstep{background:var(--s1);border:1px solid var(--line);border-radius:12px;padding:20px}
+.howstep b.num{display:block;font:800 30px/1 var(--fh);color:var(--mute);margin-bottom:12px}
+.howstep h3{font:700 18px/1.3 var(--fh);margin:0 0 6px}
+.howstep p{margin:0;color:var(--mute);font-size:15px}
+/* v7: countdown */
+.cd{background:var(--s1);border:1px solid var(--line);border-radius:12px;padding:24px 20px;text-align:center}
+.cdtime{display:flex;justify-content:center;gap:10px;margin:16px 0 20px}
+.cdtime span{background:var(--s2);border:1px solid var(--line);border-radius:10px;padding:12px 8px;min-width:64px;font-size:13px;color:var(--mute)}
+.cdtime b{display:block;font:800 28px/1 var(--fh);color:var(--ink);margin-bottom:4px}
+/* v7: teaser */
+.teaser{margin-top:22px;border:1px solid var(--line);border-radius:12px;overflow:hidden;aspect-ratio:16/9;background:var(--s1)}
+.teaser iframe,.teaser video{width:100%;height:100%;display:block;border:0}
+body.locked>header.bar,body.locked>.wrap,body.locked>footer,body.locked>#sticky{display:none}
+/* v7: next up in reader */
+.nextup{margin-top:26px;background:var(--s1);border:1px solid var(--line);border-radius:12px;padding:20px}
+.nextup h3{font:700 19px/1.3 var(--fh);margin:6px 0}
+.nextup p{margin:0 0 14px;color:var(--mute);font-size:15px}
+/* v7: sticky bar */
+body.has-sticky{padding-bottom:84px}
+.sticky{position:fixed;left:0;right:0;bottom:0;z-index:55;background:#111;border-top:1px solid var(--line);display:flex;align-items:center;gap:12px;padding:12px 16px}
+.sticky span{flex:1;min-width:0;font:700 15px/1.3 var(--fh)}
+.sticky .btn{padding:10px 18px;font-size:15px;white-space:nowrap;flex-shrink:0}
+.sticky .x{background:none;border:0;color:var(--mute);font-size:22px;line-height:1;padding:4px 6px;cursor:pointer}
+/* v7: copy link on cards */
+.copylink{align-self:flex-end;font-size:13px;padding:6px 10px;margin-top:4px}
+/* v8: avail form */
+.avform{background:var(--s1);border:1px solid var(--line);border-radius:12px;padding:20px;margin-top:18px;display:grid;gap:10px}
+.avform label{font-size:13px;color:var(--mute);font-weight:700}
+.avlen{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.avlen button{background:var(--s2);border:1px solid var(--line);border-radius:10px;padding:14px;color:var(--ink);font:700 16px var(--fh);cursor:pointer;display:flex;flex-direction:column;gap:2px;align-items:flex-start;text-align:left}
+.avlen button.on{border-color:var(--ink);box-shadow:0 0 0 1px var(--ink) inset}
+.avlen button span{font:700 20px var(--fh)}
+.avform pre{background:var(--s2);border:1px solid var(--line);border-radius:10px;padding:14px;white-space:pre-wrap;word-break:break-word;font:600 14px/1.5 var(--f);color:var(--ink);margin:0 0 12px}
+</style>
+</head>
+<body class="locked">
+<!-- Site password gate: the whole page stays hidden until the password is entered. No watermark, nothing is stamped on the content. -->
+<div id="siteGate" style="position:fixed;inset:0;z-index:50;background:#0a0a0a;overflow-y:auto">
+  <div style="max-width:420px;margin:14vh auto;padding:0 22px 60px">
+    <div class="panel">
+      <h2 style="margin:0">Empire Syndicates</h2>
+      <p class="fine" style="margin-top:14px">This site is private. Enter the site password to open it.</p>
+      <label style="display:block;font-size:13px;color:var(--mute);margin-bottom:4px" for="sgPass">Site password</label>
+      <input id="sgPass" type="password" autocomplete="current-password">
+      <div class="row" style="margin-top:14px"><button id="sgGo" class="btn" type="button" style="flex:1">Open the site</button></div>
+      <p id="sgMsg" class="msg"></p>
+      <p class="fine" style="margin-top:14px">Site admin? <a href="#" id="sgAdmin" style="color:var(--ink)">Open admin</a></p>
+    </div>
+  </div>
+</div>
+<div class="bgglow" aria-hidden="true"><i></i><i></i></div>
+<header class="bar">
+  <div class="barin">
+    <a class="brand" href="#top" data-nav="home"><i></i>Empire Syndicates</a>
+    <nav class="links"><a href="#pricing" data-nav="home" data-i18n="nav_pr">Pricing</a><a href="#avail" data-nav="home" data-i18n="av_t">How to avail</a><a href="#" data-nav="lib" data-i18n="nav_lib">Library</a></nav>
+    <div class="right"><span id="chip" class="chip" hidden></span><button id="leave" class="ghost" hidden data-i18n="remove_key">Remove key</button><button id="adminBtn" class="ghost" type="button">Admin</button><button id="burger" class="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span></button></div>
+  </div>
+  <nav id="menu" class="menu" hidden><a href="#pricing" data-nav="home" data-i18n="nav_pr">Pricing</a><a href="#avail" data-nav="home" data-i18n="av_t">How to avail</a><a href="#" data-nav="lib" data-i18n="nav_lib">Library</a><a href="#" id="menuAdmin">Admin</a></nav>
+</header>
+
+<div class="wrap" id="top">
+  <div id="homeView">
+  <section class="hero hero-bp">
+    <div>
+      <span class="rule"></span>
+      <p class="lab pop">Private library &middot; Updated every week</p>
+      <h1 class="pop popwords">The private library. Everything the free videos don't show.</h1>
+      <p class="sub pop" style="transition-delay:.1s">Updated prompts, pro guides for all websites, private campaigns, methods, sauces, bypassing AI, skills, codes, mentoring — and fresh meta captions every week. One key opens it all.</p>
+      <div class="rmeta pop" style="transition-delay:.2s"><span class="pill">Updated weekly</span><span class="pill">1 month $7.93</span><span class="pill">Lifetime $12.70</span></div>
+      <div class="cta pop" style="transition-delay:.3s"><a class="btn" href="#pricing">Get your key — from $7.93</a><a class="btn ghostbtn" href="#" data-nav="lib" data-i18n="hero_cta2">Unlock the full library</a></div>
+      <div id="teaser" class="teaser pop" hidden></div>
+    </div>
+  </section>
+
+  <section class="sec" id="inside">
+    <h2 class="t pop popwords">What's inside the library</h2>
+    <p class="lead pop">One key opens all of it — and it keeps growing.</p>
+    <div class="list">
+      <div class="item"><h3>Updated prompts</h3><p>Fresh prompts, updated as the platforms change.</p></div>
+      <div class="item"><h3>Pro guides for all websites</h3><p>Step-by-step guides for every site that matters.</p></div>
+      <div class="item"><h3>Private campaigns</h3><p>Campaigns you won't find in the free videos.</p></div>
+      <div class="item"><h3>Methods</h3><p>Step-by-step methods, kept current.</p></div>
+      <div class="item"><h3>Sauces</h3><p>Sources and angles, straight from the Empire.</p></div>
+      <div class="item"><h3>Bypassing AI</h3><p>Ways around AI detection, updated as it changes.</p></div>
+      <div class="item"><h3>Skills</h3><p>The skills behind consistent clipping.</p></div>
+      <div class="item"><h3>Codes</h3><p>Working codes and scripts, ready to use.</p></div>
+      <div class="item"><h3>Mentoring</h3><p>Direct guidance when you're stuck.</p></div>
+      <div class="item"><h3>Weekly updated meta captions</h3><p>Fresh meta captions every week — copy, paste, post.</p></div>
+    </div>
+  </section>
+
+  <div class="marq" aria-hidden="true"><div class="marq-in"><span><b>HOOKS</b> ✦ RETENTION ✦ <b>AUTOMATION</b> ✦ CLIPPING ✦ <b>TITLES</b> ✦ THUMBNAILS ✦ <b>SCHEDULING</b> ✦ FACEBOOK REELS ✦ <b>YOUTUBE SHORTS</b> ✦ TIKTOK ✦ <b>INSTAGRAM</b> ✦ </span><span><b>HOOKS</b> ✦ RETENTION ✦ <b>AUTOMATION</b> ✦ CLIPPING ✦ <b>TITLES</b> ✦ THUMBNAILS ✦ <b>SCHEDULING</b> ✦ FACEBOOK REELS ✦ <b>YOUTUBE SHORTS</b> ✦ TIKTOK ✦ <b>INSTAGRAM</b> ✦ </span></div></div>
+
+  <section class="sec" id="whatsnew">
+    <h2 class="t pop popwords" data-i18n="nw_t">What's new</h2>
+    <p class="lead pop" data-i18n="nw_lead">The latest additions to the library.</p>
+    <div class="nwlist pop" id="nwList"></div>
+  </section>
+
+  <section class="sec" id="compare">
+    <h2 class="t pop popwords" data-i18n="cmp_t">Free vs key</h2>
+    <p class="lead pop" data-i18n="cmp_lead">Start free. Unlock the rest when you're ready.</p>
+    <div class="cmp pop">
+      <div class="col"><h3 data-i18n="cmp_free">Free</h3><p class="fine" style="margin:0" data-i18n="cmp_free_sub">No key, no sign-up.</p>
+        <ul>
+          <li><span class="y">✓</span> <b data-i18n="cmp_r1">15 free blueprints</b></li>
+          <li><span class="n">—</span> <span data-i18n="cmp_r2">Prompts, tricks and guides</span></li>
+          <li><span class="n">—</span> <span data-i18n="cmp_r3">New content as it's published</span></li>
+          <li><span class="y">✓</span> <span data-i18n="cmp_r5">Progress saved in your browser</span></li>
+        </ul></div>
+      <div class="col hot"><h3 data-i18n="cmp_key">With a key</h3><p class="fine" style="margin:0" data-i18n="cmp_key_sub">The full library.</p>
+        <ul>
+          <li><span class="y">✓</span> <b data-i18n="cmp_r1">15 free blueprints</b></li>
+          <li><span class="y">✓</span> <span data-i18n="cmp_r2">Prompts, tricks and guides</span></li>
+          <li><span class="y">✓</span> <span data-i18n="cmp_r3">New content as it's published</span></li>
+          <li><span class="y">✓</span> <span data-i18n="cmp_r4">All 4 key lengths</span></li>
+          <li><span class="y">✓</span> <span data-i18n="cmp_r5">Progress saved in your browser</span></li>
+        </ul>
+        <a class="btn" href="#" data-nav="lib" data-i18n="hero_cta2">Unlock the full library</a></div>
+    </div>
+  </section>
+
+  <section class="sec" id="how">
+    <h2 class="t pop popwords" data-i18n="how_t">How a key works</h2>
+    <p class="lead pop" data-i18n="how_lead">Three steps and you're in.</p>
+    <div class="how pop">
+      <div class="howstep"><b class="num">01</b><h3 data-i18n="how_1t">Ask for a key</h3><p data-i18n="how_1d">Join the Discord and tell the admin which key length you want.</p></div>
+      <div class="howstep"><b class="num">02</b><h3 data-i18n="how_2t">Get your key</h3><p data-i18n="how_2d">The admin sends you a 16-character key after purchase.</p></div>
+      <div class="howstep"><b class="num">03</b><h3 data-i18n="how_3t">Enter it and unlock</h3><p data-i18n="how_3d">Open the Library, enter your key, and the full library opens.</p></div>
+    </div>
+    <div style="margin-top:18px"><a class="btn" href="#avail" data-i18n="av_cta">Fill up the form</a></div>
+  </section>
+
+  <section class="sec" id="cdSec" hidden>
+    <div class="cd pop">
+      <p class="lab" id="cdLab"></p>
+      <div class="cdtime" id="cdTime"></div>
+      <p class="fine" id="cdEnd" hidden data-i18n="cd_end">This offer has closed — join the Discord for the next one.</p>
+      <a class="btn" href="#" data-nav="lib" data-i18n="hero_cta2">Unlock the full library</a>
+    </div>
+  </section>
+
+  <section class="sec" id="pricing">
+    <h2 class="t pop popwords" data-i18n="pr_t">Pick your key</h2>
+    <p class="lead pop" data-i18n="pr_lead">One key. The whole library. Choose how long it lasts.</p>
+    <div class="price pop" id="priceGrid"></div>
+    <p class="fine" data-i18n="pr_note">Prices are set on Discord — join and ask for the key you want.</p>
+  </section>
+
+  <section class="sec" id="avail">
+    <h2 class="t pop popwords" data-i18n="av_t">How to avail</h2>
+    <p class="lead pop" data-i18n="av_lead">Fill up the form, send it to the admin, and get your key.</p>
+    <div class="how pop">
+      <div class="howstep"><b class="num">01</b><h3 data-i18n="av_s1t">Fill up the form</h3><p data-i18n="av_s1d">Choose your key length and enter your name and Discord username.</p></div>
+      <div class="howstep"><b class="num">02</b><h3 data-i18n="av_s2t">Send your request</h3><p data-i18n="av_s2d">Copy your request and paste it in the Discord — the admin sees it there.</p></div>
+      <div class="howstep"><b class="num">03</b><h3 data-i18n="av_s3t">Pay and get your key</h3><p data-i18n="av_s3d">The admin sends your 16-character key after payment. Enter it in the Library and everything opens.</p></div>
+    </div>
+    <form class="avform pop" id="avForm" novalidate>
+      <div class="avlen" id="avLen">
+        <button type="button" data-avlen="1m" class="on"><b data-i18n="acc_1m">1 month</b><span></span></button>
+        <button type="button" data-avlen="life"><b data-i18n="acc_life">Lifetime</b><span></span></button>
+      </div>
+      <p class="fine" id="avSel" style="margin:0"></p>
+      <label for="avName" data-i18n="av_name">Your name</label>
+      <input id="avName" maxlength="60" data-i18n-ph="av_name_ph" placeholder="Type your name" autocomplete="name">
+      <label for="avDc" data-i18n="av_dc">Discord username</label>
+      <input id="avDc" maxlength="60" data-i18n-ph="av_dc_ph" placeholder="Type your Discord username" autocomplete="off" spellcheck="false">
+      <label for="avNote" data-i18n="av_note">Note (optional)</label>
+      <textarea id="avNote" rows="2" data-i18n-ph="av_note_ph" placeholder="Payment reference or message"></textarea>
+      <button class="btn" type="submit" data-i18n="av_send">Send my request</button>
+      <p id="avMsg" class="msg" role="status"></p>
+      <div id="avOut" hidden>
+        <p class="lab" data-i18n="av_sum">Your request</p>
+        <pre id="avReq"></pre>
+        <div class="row"><button id="avCopy" class="btn" type="button" data-i18n="av_copy">Copy request</button><a class="btn ghostbtn" href="https://discord.gg/nnP67YMHE" target="_blank" rel="noopener" data-i18n="av_open">Open Discord</a></div>
+        <p class="fine" data-i18n="av_done">Request ready — copy it and paste it in the Discord.</p>
+      </div>
+    </form>
+  </section>
+
+  <section class="sec" id="faq">
+    <h2 class="t pop popwords" data-i18n="faq_t">Questions, answered</h2>
+    <p class="lead pop" data-i18n="faq_lead">The things buyers ask before they get a key.</p>
+    <div class="faq pop" id="faqList"></div>
+  </section>
+
+  <section class="sec" id="discord">
+    <div class="dc pop">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M6 4h12a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4h-2.5l-1.2-1.8h-4.6L8.5 20H6a4 4 0 0 1-4-4V8a4 4 0 0 1 4-4Z"/><circle cx="9" cy="12" r="1.6" fill="#0a0a0a"/><circle cx="15" cy="12" r="1.6" fill="#0a0a0a"/></svg>
+      <h2 data-i18n="dc_t">Join the Empire</h2>
+      <p data-i18n="dc_lead">The community where clippers share what's working — wins, tests, and new playbooks first.</p>
+      <a class="btn" href="https://discord.gg/nnP67YMHE" target="_blank" rel="noopener" data-i18n="dc_cta">Join the Discord</a>
+      <p class="fine" style="margin:14px 0 0" data-i18n="dc_note">Free to join.</p>
+    </div>
+  </section>
+
+  <section class="sec" id="results">
+    <h2 class="t pop popwords" data-i18n="res_t">Results from the Empire</h2>
+    <p class="lead pop" data-i18n="res_lead">Real wins from creators using these playbooks.</p>
+    <div class="reslist pop" id="resList"></div>
+  </section>
+
+  <div class="pub">
+    <section class="sec" id="overview">
+      <h2 class="t pop popwords" data-i18n="ov_t">Overview</h2>
+      <p class="lead pop" data-i18n="ov_lead">One key opens the complete library for the length of time you choose.</p>
+      <div class="glance">
+        <div><b>2</b><span data-i18n="gl_len">Access lengths</span></div>
+        <div><b>3</b><span data-i18n="gl_types">Content types</span></div>
+        <div><b data-i18n="gl_inst">Instant</b><span data-i18n="gl_act">Activation</span></div>
+        <div><b data-i18n="gl_life">Lifetime</b><span data-i18n="gl_opt">Option available</span></div>
+      </div>
+    </section>
+
+    <section class="sec" id="capabilities">
+      <h2 class="t pop popwords" data-i18n="cap_t">Capabilities</h2>
+      <p class="lead pop" data-i18n="cap_lead">The library grows as the administrator publishes new material.</p>
+      <div class="list">
+        <div class="item"><h3 data-i18n="cap_auto">Automation</h3><p>Repeatable workflows that handle posting and routine tasks.</p></div>
+        <div class="item"><h3 data-i18n="cap_clip">Clipping</h3><p>Methods for turning long videos into short, publishable clips.</p></div>
+        <div class="item"><h3 data-i18n="cap_prompts">Prompts</h3><p>Ready-to-use prompts, copied in a single action.</p></div>
+        <div class="item"><h3 data-i18n="cap_tricks">Tricks and guides</h3><p>Short, tested techniques and step-by-step guides.</p></div>
+      </div>
+    </section>
+
+    <section class="sec" id="access">
+      <h2 class="t pop popwords" data-i18n="acc_t">Access</h2>
+      <p class="lead pop" data-i18n="acc_lead">Every key grants the same access. Only the duration differs.</p>
+      <div class="list">
+        <div class="item"><h3 data-i18n="acc_1m">1 month</h3><p>A full month of updates.</p></div>
+        <div class="item"><h3 data-i18n="acc_life">Lifetime</h3><p>Permanent access to the library.</p><em>Best value</em></div>
+      </div>
+      <p class="fine" data-i18n="acc_fine">Keys are issued by the administrator after purchase. Your access period begins when you first activate the key.</p>
+    </section>
+  </div>
+
+  </div>
+  <div id="libView" hidden>
+  <p style="margin:28px 0 0"><button id="libBack" class="ghost" type="button" data-i18n="lib_back">&lsaquo; Back to blueprints</button></p>
+  <section id="lockView" class="hero">
+    <div>
+      <span class="rule"></span>
+      <p class="lab" data-i18n="lib_eye">Automation and clipping playbooks</p>
+      <h1 class="pop popwords" data-i18n="lib_h1">A private library for creators who work at scale.</h1>
+      <p class="sub" data-i18n="lib_sub">Prompts, techniques and guides maintained by the administrator. Access is granted by license key.</p>
+    </div>
+    <div class="keybox">
+      <h2 data-i18n="kb_t">Member access</h2>
+      <p class="t" data-i18n="kb_txt">Enter the key issued to you at purchase.</p>
+      <label for="k" data-i18n="kb_label">License key</label>
+      <div class="row"><input id="k" maxlength="19" placeholder="____-____-____-____" autocomplete="off" spellcheck="false"><button id="go" class="btn" type="button" data-i18n="unlock">Unlock</button></div>
+      <p id="msg" class="msg" role="status"></p>
+      <p class="adminhint"><a href="#avail" data-nav="home" data-i18n="av_link">No key yet? Fill up the form to get one.</a></p>
+      <p class="adminhint"><span data-i18n="own_q">Owner? </span><button id="adminHint" type="button" data-i18n="admin_open">Set up or open admin access</button></p>
+    </div>
+  </section>
+
+  <section id="appView" hidden>
+    <nav class="tabs" id="tabs">
+      <button data-t="lib" class="on" data-i18n="tab_lib">Library</button>
+      <button data-t="keys" data-admin data-i18n="tab_keys">Keys</button>
+      <button data-t="man" data-admin data-i18n="tab_man">Add content</button>
+    </nav>
+    <div id="t-lib">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:14px"><span id="libKeyStatus" style="color:var(--mute);font-size:14px"></span><button id="leave2" class="ghost" type="button" hidden data-i18n="remove_key">Remove key</button></div>
+      <div class="tools"><input id="q" type="search" placeholder="Search the library" aria-label="Search" data-i18n-ph="search_ph"></div>
+      <div class="chips" id="chips" style="margin-bottom:18px"></div>
+      <div id="libList"></div>
+    </div>
+    <div id="t-keys" hidden>
+      <div class="panel">
+        <h2>Issue keys</h2>
+        <div class="grid">
+          <div><label for="dur">Length</label><select id="dur"><option value="1m">1 month</option><option value="life">Lifetime</option></select></div>
+          <div><label for="lbl">Buyer or note</label><input id="lbl" maxlength="40" placeholder="Optional"></div>
+          <div><label for="qty">Quantity</label><input id="qty" type="number" min="1" max="10" value="1"></div>
+          <button id="gen" class="btn" type="button">Issue</button>
+        </div>
+        <p id="gm" class="msg"></p>
+      </div>
+      <div class="panel"><h2>All keys</h2><div id="keyList"></div></div>
+      <div class="panel">
+        <h2>Publish your changes</h2>
+        <p class="fine" style="margin-top:0">This file has no server. New keys and content only go live for buyers after you upload the downloaded file to your host.</p>
+        <button id="exportBtn" class="btn" type="button">Download updated site file</button>
+        <p id="em" class="msg"></p>
+      </div>
+      <div class="panel">
+        <h2>Site settings</h2>
+        <p class="fine" style="margin-top:0">Countdown and teaser video for the landing page. They only go live for buyers after you download and upload the updated file. The site password works the same way — a new password only reaches buyers after you download and upload the updated file.</p>
+        <div style="display:grid;gap:10px">
+          <div><label for="cdDate">Countdown ends (leave empty to hide it)</label><input id="cdDate" type="datetime-local"></div>
+          <div><label for="cdLabel">Countdown label</label><input id="cdLabel" maxlength="60" placeholder="e.g. Batch 1 closes in"></div>
+          <div><label for="tzUrl">Teaser video URL (YouTube link or .mp4)</label><input id="tzUrl" placeholder="https://..."></div>
+          <div><label for="sitePass">Site password (visitors need this before the site opens — leave empty to keep the current one)</label><input id="sitePass" type="password" autocomplete="new-password"></div>
+          <div class="row"><button id="sitePassSave" class="btn" type="button">Change site password</button></div>
+          <p id="sitePassMsg" class="msg"></p>
+          <div><label for="adminPass">Admin password (only you — never share this; it controls keys, content and the site password)</label><input id="adminPass" type="password" autocomplete="new-password" placeholder="Leave empty to keep the current one"></div>
+          <div class="row"><button id="adminPassSave" class="btn" type="button">Change admin password</button></div>
+          <p id="adminPassMsg" class="msg"></p>
+          <div class="row"><button id="setSave" class="btn" type="button">Save settings</button></div>
+        </div>
+        <p id="setm" class="msg"></p>
+      </div>
+    </div>
+    <div id="t-man" hidden>
+      <div class="panel">
+        <h2 id="fh">New item</h2>
+        <div style="display:grid;gap:10px">
+          <div class="row"><input id="ct" maxlength="120" placeholder="Title"><select id="cy" style="max-width:160px"><option>Prompt</option><option>Trick</option><option>Guide</option><option>Proof</option></select></div>
+          <textarea id="cb" placeholder="Paste the prompt, trick or guide here"></textarea>
+          <div class="row"><button id="save" class="btn" type="button">Save</button><button id="cancel" class="ghost" type="button" hidden>Cancel edit</button></div>
+        </div>
+        <p id="cm" class="msg"></p>
+      </div>
+      <div id="manList"></div>
+    </div>
+  </section>
+  </div>
+  <footer><p data-i18n="foot_rights">© 2026 Empire Syndicates. All rights reserved.</p><div class="langs" id="langs"></div><p class="fine" data-i18n="foot_langnote">Language changes the menus and headings. The blueprints stay in English.</p></footer>
+</div>
+
+<div id="sticky" class="sticky" hidden><span data-i18n="stk_t">Unlock the full library — from $7.93</span><a class="btn" href="#avail" data-i18n="av_now">Avail now</a><button id="stickyX" class="x" type="button" aria-label="Close">×</button></div>
+
+<!-- Admin panel -->
+<div id="adminView" role="dialog" aria-modal="true" aria-label="Admin access" hidden style="position:fixed;inset:0;z-index:60;background:rgba(0,0,0,.82);overflow-y:auto">
+  <div style="max-width:520px;margin:8vh auto;padding:0 22px 60px">
+    <div class="panel">
+      <div style="display:flex;justify-content:space-between;align-items:center"><h2 style="margin:0">Admin access</h2><button id="adminClose" class="ghost" type="button">Close</button></div>
+      <div id="adminSetup" hidden style="margin-top:16px">
+        <p class="fine" style="margin-top:0">No admin password is set yet on this copy of the site. Choose one now — only its scrambled hash is stored, never the password itself.</p>
+        <label style="display:block;font-size:13px;color:var(--mute);margin-bottom:4px" for="ap1">Choose an admin password</label>
+        <input id="ap1" type="password" autocomplete="new-password" style="margin-bottom:10px">
+        <label style="display:block;font-size:13px;color:var(--mute);margin-bottom:4px" for="ap2">Repeat it</label>
+        <input id="ap2" type="password" autocomplete="new-password">
+        <div class="row" style="margin-top:14px"><button id="apSet" class="btn" type="button" style="flex:1">Set admin password</button></div>
+        <p id="apm" class="msg"></p>
+      </div>
+      <div id="adminLogin" hidden style="margin-top:16px">
+        <p class="fine" style="margin-top:0">Enter the admin password to open the Keys and Add content tabs.</p>
+        <label style="display:block;font-size:13px;color:var(--mute);margin-bottom:4px" for="apw">Admin password</label>
+        <input id="apw" type="password" autocomplete="current-password">
+        <div class="row" style="margin-top:14px"><button id="apGo" class="btn" type="button" style="flex:1">Open admin</button></div>
+        <p id="apm2" class="msg"></p>
+      </div>
+      <div id="adminIn" hidden style="margin-top:16px">
+        <p class="fine" style="margin-top:0">You are signed in as admin on this browser. The Keys and Add content tabs are now visible.</p>
+        <div class="row"><button id="apOut" class="ghost" type="button">Sign out of admin</button></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Blueprint reader -->
+<script id="es-seed" type="application/json">{"adminHash":"","sitePassHash":"","keys":[],"items":[],"settings":{}}</script>
+<script>
+/* ================= Empire Syndicates — PAID library =================
+   No server, no sign-in, no external calls except Google Fonts.
+   A site password gate (hash in the seed) hides the whole page until the
+   password is entered; an admin session bypasses it. No watermark anywhere.
+   State lives in the seed block above (shipped inside this file) merged with
+   this browser's localStorage (es_* keys). Keys and content the admin adds
+   only reach other people after he downloads the updated file (Export button)
+   and uploads it to his host — that is the honest limit of a static file. */
+/* Courses: copied verbatim from the user's own source file by script (never retyped). */
+var COURSES = [{"id":"views","tag":"YouTube","title":"How to scale your views","desc":"A simple system for moving from a few hundred views to steady, repeatable reach.","l":[{"t":"Pick one niche and one viewer","b":["Platforms group your account by who watches it. A mixed feed makes that grouping unclear.","Choose one topic and one viewer you can describe in a sentence, and keep your first 20 posts inside it."]},{"t":"Post in volume, then study results","b":["Early on, quantity teaches faster than polish. Commit to a schedule you can keep, such as one post a day for 30 days.","After each batch, sort posts by views. Make more like the top 20% and stop making the bottom ones."]},{"t":"Repeat what already worked","b":["When a post beats your average, remake it with a new angle: same topic, new hook, different example.","Keep a simple sheet with hook, topic, length and views so patterns become visible."]},{"t":"Review once a week","b":["Look at reach, average watch time and shares, not only likes.","Change one thing at a time so you know what caused the result."]}]},{"id":"graph","tag":"YouTube","title":"Learn the retention graph","desc":"Read your watch-time graph, find where viewers leave, and fix it.","l":[{"t":"What the graph shows","b":["The retention graph shows the share of viewers still watching at each second of your video.","A flat line is good. A steep fall means many people left at that moment."]},{"t":"Read the first three seconds","b":["A big drop at the start usually means a weak hook or a slow intro.","Open with the result, the question or the most surprising line, and cut any greeting."]},{"t":"Find dips and spikes","b":["A dip marks a boring or confusing moment. Shorten it, speed it up or remove it.","A spike or replay marks something valuable. Move it earlier or turn it into its own clip."]},{"t":"Fix, then compare","b":["Edit one issue, post again, and compare average view duration with your last few videos.","Keep a note of every fix that worked so you can reuse it."]}]},{"id":"hooks","tag":"Clipping","title":"Hooks that hold the first 3 seconds","desc":"Write openings that keep people watching past the point where most scroll away.","l":[{"t":"Lead with the payoff","b":["Tell viewers what they will get in the first line, such as the result, the number or the mistake.","Skip intros and logos. Your first second is your pitch."]},{"t":"Use curiosity honestly","b":["Raise a question the viewer wants answered, then actually answer it in the video.","A hook the video doesn’t deliver on costs you watch time and trust."]},{"t":"Match the visual to the line","b":["Show movement, a clear subject or on-screen text from the very first frame.","The picture and the words should say the same thing at the same time."]},{"t":"Write ten, shoot the best","b":["Write ten versions of your opening line before you record.","Pick the clearest one and keep the rest for future videos."]}]},{"id":"clip","tag":"Clipping","title":"Clipping long videos into shorts","desc":"Choose the right moments, trim them cleanly and export clips ready to post.","l":[{"t":"Choose complete moments","b":["The best clips have a setup, a point and a payoff within a short window.","Look for strong opinions, surprising facts, funny reactions and clear answers to a question."]},{"t":"Start on the strongest line","b":["Trim so the clip begins on the most interesting sentence, not the lead-up.","Cut long pauses and filler words to keep the pace up."]},{"t":"Keep it as short as it can be","b":["Length should serve the idea. If the point lands in 20 seconds, stop at 20 seconds.","End right after the payoff instead of fading out."]},{"t":"Caption and export","b":["Add large, high-contrast captions and keep them inside the safe area.","Export vertical 9:16 and check the audio before you post. Only clip content you own or have permission to use."]}]},{"id":"system","tag":"Facebook","title":"Build a Facebook posting system you can keep","desc":"Batch your work so posting stays consistent even on busy weeks.","l":[{"t":"Collect ideas in one place","b":["Keep one running list of topics, questions and hooks.","Add to it whenever an idea appears, so you never start from a blank page."]},{"t":"Batch the work","b":["Record or edit several posts in one sitting instead of one at a time.","Batching cuts setup time and keeps your style consistent."]},{"t":"Schedule ahead","b":["Use the platform’s scheduler to queue posts for the week.","Pick consistent times and adjust only after you have a few weeks of data."]},{"t":"Define a minimum day","b":["Decide the smallest post that still counts, such as a short clip or a quick tip.","On busy days, do the minimum instead of skipping."]}]},{"id":"captions","tag":"Clipping","title":"Captions and pacing basics","desc":"Make videos easy to follow with sound off and hard to scroll past.","l":[{"t":"Why captions matter","b":["Many people watch without sound, so captions carry your message.","They also help viewers follow along in noisy places."]},{"t":"Style them for reading","b":["Keep to two lines and a few words at a time, in a large, clean font.","Highlight the key word in a contrasting color, and don’t overdo it."]},{"t":"Set the pace","b":["Change the visual every few seconds with a cut, zoom or new graphic.","Remove pauses and repeated phrases."]},{"t":"Protect the audio","b":["Clear voice matters more than a perfect picture.","Keep music low enough that every word is easy to hear."]}]},{"id":"fbpage","tag":"Facebook","title":"Set up a Facebook Page that can grow","desc":"Get the basics right before you automate anything.","l":[{"t":"Choose a clear purpose","b":["Decide what the Page is about and who it is for, then say it in the name, bio and cover.","A focused Page is easier for people and for Facebook to understand."]},{"t":"Complete the profile","b":["Add a clear profile photo, cover, category and a short description of what you post and how often.","Add links and contact details so visitors know where to go next."]},{"t":"Plan a content mix","b":["Mix short videos, photos and text posts, and note which format gets the most reach.","Keep a rough ratio, such as mostly video with a few posts that start conversations."]},{"t":"Learn your insights","b":["Open the Page’s insights to see reach, watch time and which posts bring new followers.","Use them to decide what to post more of next week."]}]},{"id":"fbreels","tag":"Facebook","title":"Facebook Reels: formats that travel","desc":"Make short vertical videos that earn reach beyond your followers.","l":[{"t":"Use the right format","b":["Shoot vertical 9:16 and keep the important action in the center of the frame.","Keep clips short and clear, with the point arriving early."]},{"t":"Hook and loop","b":["Open with the payoff or a question, and end in a way that makes a replay natural.","Rewatches show that people enjoyed the video."]},{"t":"Post original or licensed content","b":["Facebook gives less reach to reposted content from other creators, so add your own edit, voice or commentary.","Clip only what you own or have permission to use."]},{"t":"Test and repeat","b":["Post a few variations of a winning idea and compare watch time.","Keep the version people watch the longest."]}]},{"id":"fbauto","tag":"Facebook","title":"Automate Facebook posting safely","desc":"Save time with scheduling and templates without risking your Page.","l":[{"t":"Automate the routine, not the relationship","b":["Automate scheduling, reminders and repeating formats. Reply to comments and messages yourself.","Avoid tools that promise fake likes, follows or mass messaging, because they can get a Page restricted."]},{"t":"Use the built-in scheduler","b":["Meta’s own tools, including Meta Business Suite, let you plan posts and Reels ahead of time.","Prefer official tools. Third-party tools that ask for your password put your account at risk."]},{"t":"Build templates","b":["Save caption structures and hook formulas you can reuse.","Fill in the specifics each time so posts don’t feel repetitive."]},{"t":"Protect your account","b":["Turn on two-factor authentication and limit who has admin access to the Page.","Review connected apps regularly and remove any you no longer use."]}]},{"id":"ytauto","tag":"YouTube","title":"YouTube automation: a channel that runs on a system","desc":"Set up a repeatable workflow for research, scripting, editing and publishing.","l":[{"t":"Understand what automation means","b":["It means a repeatable workflow with clear steps and checklists, often with a helper or tool for each stage.","It does not mean uploading mass-produced videos with no human input."]},{"t":"Map your workflow","b":["Write down each stage: topic research, script, voice, edit, thumbnail and upload.","Turn each stage into a short checklist so anyone can follow it."]},{"t":"Use tools as assistants","b":["AI tools can help with ideas, outlines and rough drafts, but a person should review the result and add their own insight.","YouTube limits monetization on mass-produced or repetitive content, so add your own voice, commentary or editing."]},{"t":"Measure each batch","b":["Track click-through rate, average view duration and returning viewers for every video.","Improve the weakest stage of the workflow first."]}]},{"id":"ytthumb","tag":"YouTube","title":"Titles and thumbnails that earn the click","desc":"Package your videos so the right people choose to watch.","l":[{"t":"Think packaging first","b":["Decide the title and thumbnail before you finish the video so the idea is clear.","If you can’t explain the video in one line, it may not be ready."]},{"t":"Write clear titles","b":["Lead with the main benefit or the curiosity, and keep it short enough to read on a phone.","Avoid misleading claims, because viewers who feel tricked leave quickly."]},{"t":"Design simple thumbnails","b":["Use one focal point, a few big readable words and strong contrast.","Check the result at small size on a phone screen."]},{"t":"Test and learn","b":["Compare click-through rate and watch time across videos with different packaging.","If a video gets impressions but few clicks, try a new thumbnail or title."]}]},{"id":"clipsrc","tag":"Clipping","title":"Sourcing clips and staying within the rules","desc":"Find good source material and use it responsibly.","l":[{"t":"Know what you may clip","b":["Clip your own videos, content you have written permission for, or material under a clear license.","Ask the creator first and keep proof of their yes."]},{"t":"Find strong source material","b":["Interviews, podcasts, streams and tutorials often contain short, self-contained moments.","Search for long videos with lively discussion and clear opinions."]},{"t":"Add your own value","b":["Edit, caption and add context so the clip is more than a copy of the original.","Credit the source in the caption when appropriate."]},{"t":"Track permissions","b":["Keep a simple list of sources, who approved them and any terms.","Remove content promptly if a creator asks."]}]}];
+/* Beginner guides: rewritten completely in my own wording from the user's summaries.
+   Same steps, facts and numbers — no sentence copied from the source PDFs. */
+var GUIDES = [
+{id:'yt-shorts-guide',tag:'YouTube',kind:'Guide',title:'YouTube Shorts Beginner Guide',desc:'Set up a Shorts channel the right way: create it, warm it up, upload on schedule, and read what the numbers are telling you.',l:[
+{t:'Create the channel',b:['Start with a Google account and create a channel with a short name people can remember, plus a matching handle.','Add a clear profile picture so the channel looks like a real channel from day one.','Use a separate browser profile, or a separate device, for each channel you run.','Verify the channel with a phone number at youtube.com/verify.']},
+{t:'Warm it up for 3 to 7 days',b:['For the first few days, use the account like a normal viewer in one niche only.','Watch for 20 to 30 minutes a day, and like and comment on videos that are actually in that niche.','Keep watch history switched on so YouTube learns what the channel is about.','Post nothing until the Home feed is mostly showing your niche.']},
+{t:'Upload in YouTube Studio',b:['In YouTube Studio, choose Create and then Upload videos.','Upload vertical video in 9:16, shorter than 3 minutes.','Write a clear title and description for each Short.','Mark the video as not made for kids, then set Visibility to Schedule.']},
+{t:'The 9:00 PM rule',b:['Your Shorts go live at 9:00 PM, your own time zone, every day without exception.','Schedule uploads ahead of time so you never have to post by hand.','Double-check the time zone on the channel before you schedule anything.']},
+{t:'What YouTube looks at',b:['YouTube watches whether people keep viewing or swipe the Short away.','It also tracks average view duration and the average percentage of the video watched.','Likes and other feedback count too, so the video has to earn a reaction.','Put the hook in the first 1 to 2 seconds and cut anything that does not earn its place.','Change one thing at a time and watch the analytics before changing the next.']},
+{t:'Checklist and common mistakes',b:['Channel created, verified, and warmed up before the first post.','Each Short set for 9:00 PM in your own time zone.','Hook first, no slow opening, no filler left in the cut.','Common mistake: posting before the account has been warmed up.','Common mistake: changing five things at once and never learning which one worked.']}]},
+{id:'tiktok-guide',tag:'TikTok',kind:'Guide',title:'TikTok Beginner Guide',desc:'Build a TikTok account from zero: set it up, warm it up, connect your scheduler, and post on jittered times.',l:[
+{t:'Create the account',b:['Sign up with an email address and pick a short username that is easy to remember.','Stick to one phone and one network whenever you open the account.','In the mobile app, go to Settings and Privacy, then Account, and switch to a Business account.','Pick a category for the Business account — scheduling tools only connect to Business accounts.']},
+{t:'Warm it up for 5 to 7 days',b:['Days 1 to 3: watch your niche for 20 to 30 minutes a day, like 5 to 10 videos, and follow 2 to 5 creators a day.','Days 3 to 5: write 3 to 5 genuine comments a day on videos in your niche.','Days 5 to 7: keep going until the For You feed is mostly your niche, then post for the first time.','Do not post anything before the feed has shifted to your niche.']},
+{t:'Connect Buffer',b:['Create an account at buffer.com, open Channels, choose Connect a channel, and pick TikTok.','Log in to TikTok when asked and allow the connection.','On the free plan, you can hold 10 scheduled posts at a time for each channel.','Prepare your sounds, text, and effects inside TikTok or CapCut first — Buffer cannot add them.']},
+{t:'Schedule a few posts a day',b:['Post a few times a day and keep every post on a schedule instead of posting by hand.','Jitter each time a few minutes off the round number so the pattern looks natural — for example 9:07 AM, 1:38 PM, and 7:12 PM.','Use different minutes every day, never the same times twice in a row.','Upload video as MP4, MOV, or WEBM, under 1 GB, and at least 360px on the short side.']},
+{t:'How the For You page spreads a video',b:['A new video is first shown to a small test group of viewers.','If those viewers watch it through, react, and share or save it, TikTok shows it to a wider group.','Follower count is not a direct factor in how far a video spreads.','Watch time, shares, saves, and comments all feed into whether it keeps spreading.','Captions, on-screen text, and hashtags help TikTok match the video to the right topic.']},
+{t:'Checklist and common mistakes',b:['Hook inside the first 3 seconds, video kept to 15 to 60 seconds, ending that loops back to the start.','Use 3 to 5 hashtags, and keep language and region settings matched to your audience.','Keep the schedule jittered and the times different every day.','Common mistake: posting from a fresh account with no warm-up.','Common mistake: scheduling with the same round times every day.']}]},
+{id:'ig-guide',tag:'Instagram',kind:'Guide',title:'Instagram Beginner Guide',desc:'Set up an Instagram page for Reels: create it, warm it up, connect your scheduler, and queue 15 Reels a day.',l:[
+{t:'Create the account',b:['Sign up with a fresh Gmail, or an old one you already own.','Choose a page name of one or two words that fits the niche, and a matching username.','Add a clean profile picture that reads clearly at small size.','Switch to a professional account and choose Creator with a category — scheduling tools only auto-post with a professional account.']},
+{t:'Warm it up for 3 to 5 days',b:['Spend about 15 minutes a day on the account before you post anything.','Day 1: spend 15 minutes on Reels, watch the niche videos you start all the way through, and follow 5 to 10 accounts.','Day 2: like, save, and share niche posts, and drop 3 to 5 genuine comments.','Day 3: add a bio that hints at the niche.','Days 4 to 5: repeat until the Reels feed is mostly your niche.']},
+{t:'Connect Buffer',b:['The setup is the same as TikTok: sign up, open Channels, connect the account, and allow it.','On the free plan you can hold 10 scheduled posts at a time — queue 10 first, then top the queue up again once the first batch is out.','Keep the account professional, or auto-posting will not work.']},
+{t:'Schedule 15 Reels a day',b:['Queue 15 Reels a day, spaced about 25 minutes apart.','Jitter every time a few minutes either way, with gaps of 20 to 30 minutes — for example a queue running from 12:00 PM to about 5:45 PM.','Never schedule more than 15 in a day.','Upload vertical Reels in 9:16, under 300 MB, in Automatic mode.']},
+{t:'Jitter, checklist, and common mistakes',b:['Jitter means moving each scheduled time a few minutes off the exact hour or half hour, so the posting pattern never looks mechanical.','Use different minutes every day, and let the gaps between posts vary.','Checklist: account created and switched to Creator, warmed up for 3 to 5 days, Buffer connected, 15 Reels queued with jitter.','Common mistake: posting 15 Reels back to back with no gaps.','Common mistake: using the same schedule times every single day.']}]}
+];
+var BLUEPRINTS = COURSES.concat(GUIDES);
+
+(function(){
+'use strict';
+var $=function(s){return document.querySelector(s)};
+var DUR={'3d':{l:'3 days',ms:3*864e5},'1w':{l:'1 week',ms:7*864e5},'1m':{l:'1 month',ms:30*864e5},'life':{l:'Lifetime',ms:Infinity}};
+var TYPES=['All','Prompt','Trick','Guide','Proof'];
+var RE=/^[A-Z0-9]{4}(-[A-Z0-9]{4}){3}$/;
+var STEP_TYPES=['READ THIS','DO THIS NOW','WORK THROUGH'];
+
+/* ---------- helpers ---------- */
+function esc(s){var d=document.createElement('div');d.textContent=(s==null?'':s);return d.innerHTML}
+function lsGet(k,d){try{var v=localStorage.getItem(k);return v==null?d:JSON.parse(v)}catch(e){return d}}
+function lsSet(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
+function lsGetStr(k,d){try{var v=localStorage.getItem(k);return v==null?d:v}catch(e){return d}}
+function lsSetStr(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+function copyText(t,b){
+  function done(){var o=b.dataset.label||b.textContent;b.dataset.label=o;b.textContent=t('copied');setTimeout(function(){b.textContent=o},1200)}
+  try{navigator.clipboard.writeText(t).then(done,function(){fb()})}catch(e){fb()}
+  function fb(){var a=document.createElement('textarea');a.value=t;document.body.appendChild(a);a.select();try{document.execCommand('copy');done()}catch(e){}a.remove()}
+}
+function armed(b,fn){
+  if(b.dataset.arm){fn();return}
+  b.dataset.label=b.textContent;b.dataset.arm=1;b.textContent='Sure?';
+  setTimeout(function(){delete b.dataset.arm;b.textContent=b.dataset.label},3000);
+}
+/* SHA-256 via WebCrypto when available; deterministic fallback hash otherwise
+   (a static file cannot do real server-side auth — the hash only keeps the
+   password out of plain sight in this browser). */
+function cyrb(str,seed){var h1=0xdeadbeef^seed,h2=0x41c6ce57^seed;for(var i=0;i<str.length;i++){var ch=str.charCodeAt(i);h1=Math.imul(h1^ch,2654435761);h2=Math.imul(h2^ch,1597334677)}h1=Math.imul(h1^(h1>>>16),2246822507)^Math.imul(h2^(h2>>>13),3266489909);h2=Math.imul(h2^(h2>>>16),2246822507)^Math.imul(h1^(h1>>>13),3266489909);return (h2>>>0).toString(16).padStart(8,'0')+(h1>>>0).toString(16).padStart(8,'0')}
+async function sha(s){
+  try{
+    if(window.crypto&&crypto.subtle){
+      var b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(s));
+      return Array.from(new Uint8Array(b)).map(function(x){return x.toString(16).padStart(2,'0')}).join('');
+    }
+  }catch(e){}
+  return 'fb:'+cyrb(s,1)+cyrb(s,2)+cyrb(s,3)+cyrb(s,4);
+}
+
+/* ---------- state: seed (shipped in file) + this browser's localStorage ---------- */
+var seed={adminHash:null,keys:[],items:[],settings:{}};
+try{seed=JSON.parse(document.getElementById('es-seed').textContent)||seed}catch(e){}
+var adminHash=lsGetStr('es_admin_hash',null)||seed.adminHash||null;
+var sitePassHash=lsGetStr('es_site_pass_hash',null)||seed.sitePassHash||null;
+var siteOpen=!!sitePassHash&&lsGetStr('es_site_unlocked','')===sitePassHash;
+var keys=lsGet('es_keys',null);
+if(!Array.isArray(keys)){keys=(seed.keys||[]).slice();lsSet('es_keys',keys)}
+var items=lsGet('es_items',null);
+if(!Array.isArray(items)){items=(seed.items||[]).slice();lsSet('es_items',items)}
+var settings=lsGet('es_settings',null);
+if(!settings||typeof settings!=='object'){settings=(seed.settings&&typeof seed.settings==='object')?seed.settings:{};lsSet('es_settings',settings)}
+var claims=lsGet('es_claims',{});
+var access=lsGet('es_access',null);
+var isAdmin=lsGetStr('es_admin_session','')==='1'&&!!adminHash;
+var unlocked=false,filter='All',q='',editId=null;
+var bpFilter='All';
+var bpQ='';
+
+function left(at,d){var ms=DUR[d]?DUR[d].ms:0;return ms===Infinity?Infinity:at+ms-Date.now()}
+function fmt(ms){var d=Math.floor(ms/864e5),h=Math.floor(ms%864e5/36e5);return d>0?d+'d '+h+'h left':h>0?h+'h left':Math.max(1,Math.floor(ms/6e4))+'m left'}
+function newCode(){var A='ABCDEFGHJKLMNPQRSTUVWXYZ23456789',b=new Uint8Array(16),s='';if(window.crypto&&crypto.getRandomValues){crypto.getRandomValues(b)}else{for(var j=0;j<16;j++)b[j]=Math.floor(Math.random()*256)}for(var i=0;i<16;i++){s+=A[b[i]%A.length];if(i%4===3&&i<15)s+='-'}return s}
+function say(t,c){var m=$('#msg');m.textContent=t;m.className='msg '+(c||'')}
+
+/* ---------- menu ---------- */
+(function(){var b=document.getElementById('burger'),m=document.getElementById('menu');
+b.addEventListener('click',function(){var o=m.hidden;m.hidden=!o;b.setAttribute('aria-expanded',String(o))});
+m.addEventListener('click',function(e){if(e.target.closest('a')){m.hidden=true;b.setAttribute('aria-expanded','false')}})})();
+
+/* ---------- views ---------- */
+function chrome(){
+  document.body.classList.toggle('in',unlocked);
+  var inside=unlocked||isAdmin;
+  $('#lockView').hidden=inside;$('#appView').hidden=!inside;
+  var chip=$('#chip');chip.hidden=!unlocked;$('#leave').hidden=!(unlocked&&!isAdmin);
+  if(unlocked)chip.textContent=isAdmin?'Admin':(access&&access.dur==='life'?t('lifetime_key'):'Key · '+fmt(left(access.at,access.dur)));
+  var lks=$('#libKeyStatus');if(lks)lks.textContent=unlocked?chip.textContent:'';
+  $('#leave2').hidden=!(unlocked&&!isAdmin);
+  document.querySelectorAll('[data-admin]').forEach(function(b){b.hidden=!isAdmin});
+  if(!isAdmin){$('#t-keys').hidden=true;$('#t-man').hidden=true;}
+  var ab=$('#adminBtn');ab.textContent='Admin';ab.classList.toggle('on',isAdmin);
+  updateSticky();
+}
+/* ---------- views: home (blueprints first) vs library (key-gated) ---------- */
+function showHome(){
+  $('#homeView').hidden=false;$('#libView').hidden=true;
+  window.scrollTo(0,0);
+  watchPops();
+  updateSticky();
+}
+function showLib(){
+  $('#homeView').hidden=true;$('#libView').hidden=false;
+  window.scrollTo(0,0);
+  if(unlocked)tab('lib');
+  watchPops();
+  updateSticky();
+}
+function tab(t){
+  document.querySelectorAll('#tabs button').forEach(function(b){b.classList.toggle('on',b.dataset.t===t)});
+  ['lib','keys','man'].forEach(function(n){$('#t-'+n).hidden=n!==t});
+}
+
+/* ---------- library ---------- */
+function chips(){$('#chips').innerHTML=TYPES.map(function(tag){return '<button data-f="'+tag+'" class="'+(tag===filter?'on':'')+'">'+(tag==='All'?t('all'):tag)+'</button>'}).join('')}
+function lib(){
+  var el=$('#libList'),ql=q.toLowerCase();
+  var list=items.filter(function(c){return c.type!=='Proof'&&(filter==='All'||c.type===filter)&&(!ql||(c.title+' '+c.body).toLowerCase().indexOf(ql)>-1)});
+  if(!list.length){el.innerHTML='<p class="empty">'+(items.length?t('empty_search'):(isAdmin?t('empty_admin'):t('empty_lib')))+'</p>';return}
+  el.innerHTML=list.map(function(c){return '<article class="card" data-id="'+esc(c.id)+'"><div class="cardh"><span class="tag">'+esc(c.type)+'</span><button class="ghost" data-copy="'+esc(c.id)+'">'+t('copy_btn')+'</button></div><h3>'+esc(c.title)+'</h3><pre>'+esc(c.body)+'</pre></article>'}).join('');
+}
+function man(){
+  if(!isAdmin)return;
+  $('#manList').innerHTML=items.map(function(c){return '<div class="card" style="cursor:default"><div class="cardh"><span class="tag">'+esc(c.type)+'</span><span><button class="ghost" data-edit="'+esc(c.id)+'">Edit</button> <button class="ghost danger" data-del="'+esc(c.id)+'">Delete</button></span></div><h3>'+esc(c.title)+'</h3></div>'}).join('')||'<p class="empty">Nothing posted yet.</p>';
+  renderResults();renderWhatsNew();
+}
+function keysR(){
+  if(!isAdmin)return;
+  $('#keyList').innerHTML=keys.map(function(k){
+    var cl=claims[k.code],st;
+    if(k.revoked){st='Revoked'}
+    else if(!cl){st='Unused'}
+    else{var r=left(cl.at,k.dur);if(r===Infinity){st='Active · lifetime'}else if(r<=0){st='Expired'}else{st='Active · '+fmt(r)}}
+    return '<div class="krow"><code>'+esc(k.code)+'</code><small>'+esc(DUR[k.dur]?DUR[k.dur].l:k.dur)+(k.label?' · '+esc(k.label):'')+'</small><span class="st">'+st+'</span><button class="ghost" data-kcopy="'+esc(k.code)+'">Copy</button>'+(k.revoked?'':'<button class="ghost" data-krev="'+esc(k.code)+'">Revoke</button>')+'<button class="ghost" data-kdel="'+esc(k.code)+'">Delete</button></div>';
+  }).join('')||'<p class="empty">No keys yet.</p>';
+}
+function unlock(){
+  unlocked=true;
+  chrome();chips();lib();man();keysR();tab('lib');
+}
+async function redeem(){
+  var v=$('#k').value.trim().toUpperCase();
+  if(!RE.test(v)){say('That key isn’t complete. Keys have 16 characters in four groups.','bad');return}
+  $('#go').disabled=true;
+  try{
+    var kd=keys.find(function(x){return x.code===v});
+    if(!kd){say('That key isn’t valid.','bad');return}
+    if(kd.revoked){say('This key was revoked. Contact the admin.','bad');return}
+    var at=claims[v]?claims[v].at:Date.now();
+    if(left(at,kd.dur)<=0){say('This key expired. Get a new one from the admin.','bad');return}
+    if(!claims[v]){claims[v]={at:at};lsSet('es_claims',claims)}
+    access={code:v,at:at,dur:kd.dur};lsSet('es_access',access);
+    say('Key accepted.','ok');unlock();
+  }finally{$('#go').disabled=false}
+}
+
+/* ---------- admin ---------- */
+function openAdmin(){
+  $('#adminView').hidden=false;
+  $('#adminSetup').hidden=!!adminHash;
+  $('#adminLogin').hidden=!adminHash||isAdmin;
+  $('#adminIn').hidden=!isAdmin;
+  if(!adminHash){setTimeout(function(){$('#ap1').focus()},50)}
+  else if(!isAdmin){setTimeout(function(){$('#apw').focus()},50)}
+}
+function closeAdmin(){$('#adminView').hidden=true}
+async function setAdmin(){
+  var p1=$('#ap1').value,p2=$('#ap2').value,m=$('#apm');
+  if(p1.length<6){m.textContent='Use at least 6 characters.';m.className='msg bad';return}
+  if(p1!==p2){m.textContent='The two passwords do not match.';m.className='msg bad';return}
+  adminHash=await sha(p1);lsSetStr('es_admin_hash',adminHash);
+  isAdmin=true;lsSetStr('es_admin_session','1');
+  $('#ap1').value='';$('#ap2').value='';
+  m.textContent='Admin password set.';m.className='msg ok';
+  closeAdmin();chrome();man();keysR();showLib();tab('keys');enterSite();
+}
+async function loginAdmin(){
+  var p=$('#apw').value,m=$('#apm2');
+  var h=await sha(p);
+  if(h!==adminHash){m.textContent='Wrong admin password.';m.className='msg bad';return}
+  isAdmin=true;lsSetStr('es_admin_session','1');
+  $('#apw').value='';m.textContent='';closeAdmin();chrome();man();keysR();showLib();tab('keys');enterSite();
+}
+function signOutAdmin(){isAdmin=false;lsSetStr('es_admin_session','');closeAdmin();chrome();tab('lib')}
+
+/* ---------- keys (admin) ---------- */
+function gen(){
+  var dur=$('#dur').value,label=$('#lbl').value.trim(),n=Math.min(10,Math.max(1,parseInt($('#qty').value,10)||1)),gm=$('#gm');
+  $('#gen').disabled=true;
+  try{
+    for(var i=0;i<n;i++){
+      keys.unshift({code:newCode(),dur:dur,label:label,revoked:false,createdAt:Date.now()+i});
+    }
+    lsSet('es_keys',keys);keysR();
+    gm.textContent=n+(n>1?' keys':' key')+' ready below. Remember: buyers only see them after you download and upload the updated file.';gm.className='msg ok';$('#lbl').value='';
+  }catch(e){gm.textContent='Couldn’t make keys.';gm.className='msg bad'}
+  $('#gen').disabled=false;
+}
+function saveC(){
+  var t=$('#ct').value.trim(),ty=$('#cy').value,bd=$('#cb').value.trim(),cm=$('#cm');
+  if(!t||!bd){cm.textContent='Add a title and the text.';cm.className='msg bad';return}
+  if(editId){var c=items.find(function(x){return x.id===editId});if(c){c.title=t;c.type=ty;c.body=bd}}
+  else{items.unshift({id:'i'+Date.now(),title:t,type:ty,body:bd,createdAt:Date.now()})}
+  lsSet('es_items',items);
+  editId=null;$('#ct').value='';$('#cb').value='';$('#cy').value='Prompt';$('#fh').textContent='New item';$('#cancel').hidden=true;
+  cm.textContent='Saved. It’s live in the Library on this browser — download the updated file to publish it to buyers.';cm.className='msg ok';
+  lib();man();
+}
+function resetForm(){editId=null;$('#ct').value='';$('#cb').value='';$('#cy').value='Prompt';$('#fh').textContent='New item';$('#cancel').hidden=true}
+
+/* ---------- export: download a fresh copy with current state in the seed ---------- */
+function exportFile(){
+  var em=$('#em');
+  try{
+    var state={adminHash:adminHash,sitePassHash:sitePassHash,keys:keys,items:items,settings:settings};
+    var html=document.documentElement.outerHTML;
+    var re=/(<script id="es-seed" type="application\/json">)[\s\S]*?(<\/script>)/;
+    if(!re.test(html)){em.textContent='Export failed: seed block not found.';em.className='msg bad';return}
+    var out=html.replace(re,'$1'+JSON.stringify(state)+'$2');
+    var blob=new Blob([out],{type:'text/html'});
+    var a=document.createElement('a');
+    a.href=URL.createObjectURL(blob);a.download='empire-syndicates.html';
+    document.body.appendChild(a);a.click();
+    setTimeout(function(){URL.revokeObjectURL(a.href);a.remove()},1000);
+    em.textContent='Downloaded. Upload this file to your host to make the new keys and content live for buyers.';em.className='msg ok';
+  }catch(e){em.textContent='Export failed: '+(e&&e.message?e.message:'error');em.className='msg bad'}
+}
+
+/* ---------- site password gate ---------- */
+async function trySitePass(){
+  var p=$('#sgPass').value,m=$('#sgMsg');
+  if(!p){m.textContent='Enter the site password.';m.className='msg bad';return}
+  var h=await sha(p);
+  if(h!==sitePassHash){m.textContent='Wrong password.';m.className='msg bad';return}
+  lsSetStr('es_site_unlocked',sitePassHash);
+  siteOpen=true;
+  $('#sgPass').value='';m.textContent='';
+  enterSite();
+}
+function enterSite(){
+  document.body.classList.remove('locked');
+  var g=$('#siteGate');if(g)g.hidden=true;
+  startSite();
+}
+async function saveAdminPass(){
+  var p=$('#adminPass').value,m=$('#adminPassMsg');
+  if(!p||p.length<6){m.textContent='Use at least 6 characters.';m.className='msg bad';return}
+  adminHash=await sha(p);
+  lsSetStr('es_admin_hash',adminHash);
+  $('#adminPass').value='';
+  m.textContent='Admin password changed on this browser. Download the updated file to publish it.';m.className='msg ok';
+}
+async function saveSitePass(){
+  var p=$('#sitePass').value,m=$('#sitePassMsg');
+  if(!p||p.length<6){m.textContent='Use at least 6 characters.';m.className='msg bad';return}
+  sitePassHash=await sha(p);
+  lsSetStr('es_site_pass_hash',sitePassHash);
+  lsSetStr('es_site_unlocked',sitePassHash);
+  $('#sitePass').value='';
+  m.textContent='Site password changed on this browser. Download the updated file to publish it to buyers.';m.className='msg ok';
+}
+
+/* ---------- events ---------- */
+document.addEventListener('click',function(e){
+  var cd=e.target.closest('.card');
+  if(cd&&!e.target.closest('button')){
+    var wasOpen=cd.classList.contains('open');
+    document.querySelectorAll('#libList .card.open').forEach(function(x){x.classList.remove('open')});
+    if(!wasOpen)cd.classList.add('open');
+    return;
+  }
+  var nv=e.target.closest('[data-nav]');
+  if(nv){
+    e.preventDefault();
+    var href=nv.getAttribute('href');
+    if(nv.dataset.nav==='lib'){showLib()}
+    else{showHome();if(href&&href.length>1&&href.charAt(0)==='#'){var t=document.querySelector(href);if(t){setTimeout(function(){try{t.scrollIntoView()}catch(e){}},60)}}}
+    return;
+  }
+  var av=e.target.closest('[data-avail]');
+  if(av){selectAvail(av.dataset.avail);return}
+  var b=e.target.closest('button');if(!b)return;var d=b.dataset;
+  if(d.t)tab(d.t);
+  else if(d.f){filter=d.f;chips();lib()}
+  else if(d.avlen){selectAvail(d.avlen)}
+  else if(d.copy){var c=items.find(function(x){return x.id===d.copy});if(c)copyText(c.body,b)}
+  else if(d.kcopy)copyText(d.kcopy,b);
+  else if(d.edit){var c2=items.find(function(x){return x.id===d.edit});if(c2){editId=c2.id;$('#ct').value=c2.title;$('#cy').value=c2.type;$('#cb').value=c2.body;$('#fh').textContent='Edit item';$('#cancel').hidden=false;window.scrollTo({top:0,behavior:'smooth'})}}
+  else if(d.del)armed(b,function(){items=items.filter(function(x){return x.id!==d.del});lsSet('es_items',items);lib();man()});
+  else if(d.krev)armed(b,function(){var k=keys.find(function(x){return x.code===d.krev});if(k){k.revoked=true;lsSet('es_keys',keys);keysR()}});
+  else if(d.kdel)armed(b,function(){keys=keys.filter(function(x){return x.code!==d.kdel});lsSet('es_keys',keys);keysR()});
+});
+$('#go').addEventListener('click',redeem);
+$('#k').addEventListener('keydown',function(e){if(e.key==='Enter')redeem()});
+$('#k').addEventListener('input',function(){
+  var r=this.value.toUpperCase().replace(/[^A-Z0-9]/g,'').slice(0,16),m=r.match(/.{1,4}/g);this.value=m?m.join('-'):'';
+});
+$('#q').addEventListener('input',function(){q=this.value;lib()});
+$('#gen').addEventListener('click',gen);
+$('#save').addEventListener('click',saveC);
+$('#cancel').addEventListener('click',resetForm);
+$('#exportBtn').addEventListener('click',exportFile);
+$('#avForm').addEventListener('submit',function(e){
+  e.preventDefault();
+  var name=$('#avName').value.trim(),dc=$('#avDc').value.trim(),note=$('#avNote').value.trim();
+  var m=$('#avMsg');
+  if(!name||!dc){m.textContent=t('av_err');m.className='msg bad';return}
+  var req='Empire Syndicates — Key request\nName: '+name+'\nDiscord: '+dc+'\nKey: '+avDurName()+' — '+PRICES[AV_LEN]+(note?'\nNote: '+note:'');
+  $('#avReq').textContent=req;
+  $('#avOut').hidden=false;
+  m.textContent='';m.className='msg';
+  copyText(req,$('#avCopy'));
+  try{document.getElementById('avOut').scrollIntoView({behavior:'smooth',block:'nearest'})}catch(e2){}
+});
+$('#avCopy').addEventListener('click',function(){copyText($('#avReq').textContent,this)});
+$('#stickyX').addEventListener('click',function(){stickyOff=true;updateSticky()});
+$('#setSave').addEventListener('click',function(){
+  settings.cdEnd=$('#cdDate').value||null;
+  settings.cdLabel=$('#cdLabel').value.trim();
+  settings.tzUrl=$('#tzUrl').value.trim();
+  lsSet('es_settings',settings);
+  renderCountdown();renderTeaser();
+  var m=$('#setm');m.textContent='Saved on this browser. Download the updated file to publish it to buyers.';m.className='msg ok';
+});
+$('#adminBtn').addEventListener('click',openAdmin);
+$('#sgGo').addEventListener('click',trySitePass);
+$('#sgPass').addEventListener('keydown',function(e){if(e.key==='Enter')trySitePass()});
+$('#sgAdmin').addEventListener('click',function(e){e.preventDefault();openAdmin()});
+$('#sitePassSave').addEventListener('click',saveSitePass);
+$('#adminPassSave').addEventListener('click',saveAdminPass);
+document.getElementById('menuAdmin').addEventListener('click',function(e){e.preventDefault();openAdmin()});
+$('#adminHint').addEventListener('click',openAdmin);
+$('#adminClose').addEventListener('click',closeAdmin);
+$('#adminView').addEventListener('click',function(e){if(e.target===$('#adminView'))closeAdmin()});
+$('#apSet').addEventListener('click',setAdmin);
+$('#apGo').addEventListener('click',loginAdmin);
+$('#apOut').addEventListener('click',signOutAdmin);
+$('#apw').addEventListener('keydown',function(e){if(e.key==='Enter')loginAdmin()});
+$('#ap2').addEventListener('keydown',function(e){if(e.key==='Enter')setAdmin()});
+function removeKey(){
+  access=null;lsSet('es_access',null);unlocked=false;$('#k').value='';say('Key removed. Enter a key to unlock again.');chrome();
+}
+$('#leave').addEventListener('click',removeKey);
+$('#leave2').addEventListener('click',removeKey);
+$('#libBack').addEventListener('click',showHome);
+setInterval(function(){
+  if(unlocked&&!isAdmin&&access){if(left(access.at,access.dur)<=0){unlocked=false;access=null;lsSet('es_access',null);say('Your key expired.','bad')}chrome()}
+},30000);
+
+/* ---------- languages ---------- */
+var LANGS=[{c:'en',f:'🇬🇧',n:'English'},{c:'de',f:'🇩🇪',n:'Deutsch'},{c:'es',f:'🇪🇸',n:'Español'},{c:'fr',f:'🇫🇷',n:'Français'},{c:'id',f:'🇮🇩',n:'Bahasa Indonesia'},{c:'pt',f:'🇧🇷',n:'Português'},{c:'ru',f:'🇷🇺',n:'Русский'}];
+var LANG=lsGetStr('es_lang','en');
+var I18N={
+en:{nav_bp:'Blueprints',nav_lib:'Library',nav_acc:'Access',hero_eye:'Free blueprints · Automation & clipping',hero_h1:'Step-by-step playbooks for creators who clip.',hero_sub:'Fifteen free blueprints that walk you through growing a channel — from your first Short to a posting system that runs on rails. No key, no sign-up. Open one and start. The full library of prompts, tricks, and guides unlocks with a key.',hero_cta1:'Browse the blueprints',hero_cta2:'Unlock the full library',pill_bp:'15 blueprints',pill_courses:'12 courses',pill_guides:'3 beginner guides',pill_free:'Free · No sign-up',sec_bp_t:'Free blueprints',sec_bp_lead:'Start learning today. No key and no sign-up needed. The full library is unlocked with a key.',sec_bp_fine:'15 blueprints: 12 courses and 3 beginner guides. Your progress is saved in this browser.',all:'All',ov_t:'Overview',ov_lead:'One key opens the complete library for the length of time you choose.',gl_len:'Access lengths',gl_types:'Content types',gl_inst:'Instant',gl_act:'Activation',gl_life:'Lifetime',gl_opt:'Option available',cap_t:'Capabilities',cap_lead:'The library grows as the administrator publishes new material.',cap_auto:'Automation',cap_clip:'Clipping',cap_prompts:'Prompts',cap_tricks:'Tricks and guides',acc_t:'Access',acc_lead:'Every key grants the same access. Only the duration differs.',acc_3d:'3 days',acc_1w:'1 week',acc_1m:'1 month',acc_life:'Lifetime',acc_fine:'Keys are issued by the administrator after purchase. Your access period begins when you first activate the key.',lib_back:'‹ Back to blueprints',lib_eye:'Automation and clipping playbooks',lib_h1:'A private library for creators who work at scale.',lib_sub:'Prompts, techniques and guides maintained by the administrator. Access is granted by license key.',kb_t:'Member access',kb_txt:'Enter the key issued to you at purchase.',kb_label:'License key',unlock:'Unlock',own_q:'Owner? ',admin_open:'Set up or open admin access',tab_lib:'Library',tab_keys:'Keys',tab_man:'Add content',search_ph:'Search the library',remove_key:'Remove key',lifetime_key:'Lifetime key',r_back:'‹ Back',r_steps:'Step-by-step',r_doc:'Full document',r_sbs:'Step by step',r_route:'Your route',r_done:'{n} of {m} steps done',lessons:'lessons',keypoints:'key points',min_u:'min',free_u:'Free',points:'points',minread:'min read',done_pill:'Done',kp_h:'Key points',tick:'Just tick it off.',done_next:'Done, next step',done_finish:'Done — finish blueprint',start_course:'Start course',of_done:'{n} of {m} done',step_w:'Step',blueprint_w:'blueprint',st_read:'READ THIS',st_do:'DO THIS NOW',st_work:'WORK THROUGH',copy_btn:'Copy',copied:'Copied',empty_lib:'No content yet. Check back soon.',empty_admin:'No content yet. Open Add content to post your first prompt or trick.',empty_search:'Nothing matches that search.',foot_rights:'© 2026 Empire Syndicates. All rights reserved.',foot_langnote:'Language changes the menus and headings. The blueprints stay in English.',stat_bp:'blueprints',stat_lessons:'lessons',stat_points:'key points',stat_lens:'key lengths',qz_t:'Where should you start?',qz_lead:'Answer 3 quick questions and we\'ll point you at the right blueprint.',qz_q1:'How new are you to clipping?',qz_q1a1:'Totally new',qz_q1a2:'I\'ve posted a few',qz_q1a3:'I\'ve been at it a while',qz_q2:'Which platform are you growing?',qz_q2a1:'YouTube',qz_q2a2:'Facebook',qz_q2a3:'TikTok',qz_q2a4:'Instagram',qz_q3:'What do you want most right now?',qz_q3a1:'More views',qz_q3a2:'A system that posts for me',qz_q3a3:'Better hooks and retention',qz_res:'Start here',qz_open:'Open this blueprint',qz_again:'Retake the quiz',qz_back:'Back',faq_t:'Questions, answered',faq_lead:'The things buyers ask before they get a key.',faq_q1:'Do I need experience to use these?',faq_a1:'No. The free blueprints start from zero — setting up a channel or page, warming it up, and posting on a schedule. The key library goes deeper, but every item is still step by step.',faq_q2:'What does a key unlock?',faq_a2:'The full library: every prompt, trick and guide the administrator publishes, for the length of your key — 1 month or lifetime.',faq_q3:'How do I use a key?',faq_a3:'Open the Library, enter your 16-character key, and you\'re in. Your access starts the first time you activate it, not the day you buy it.',faq_q4:'What if my key expires?',faq_a4:'Your access ends when the time runs out. Get a new key from the administrator to continue — your free blueprints and saved progress stay.',faq_q5:'Is the free stuff really free?',faq_a5:'Yes. All 15 blueprints are free, no key and no sign-up. The key only unlocks the extra library.',faq_q6:'Where do I buy a key?',faq_a6:'Fill up the form on this page and send your request on Discord. The admin issues your key after payment.',cmp_t:'Free vs key',cmp_lead:'Start free. Unlock the rest when you\'re ready.',cmp_free:'Free',cmp_free_sub:'No key, no sign-up.',cmp_key:'With a key',cmp_key_sub:'The full library.',cmp_r1:'15 free blueprints',cmp_r2:'Prompts, tricks and guides',cmp_r3:'New content as it\'s published',cmp_r4:'2 key lengths',cmp_r5:'Progress saved in your browser',pr_t:'Pick your key',pr_lead:'One key. The whole library. Choose how long it lasts.',pr_cta:'Get it on Discord',pr_price:'Price on Discord',pr_best:'Best value',pr_f1:'Full library access',pr_f2:'New content included',pr_f3:'Starts when you activate it',pr_note:'Fill up the form below to avail — the admin sends your key after payment.',dc_t:'Join the Empire',dc_lead:'The community where clippers share what\'s working — wins, tests, and new playbooks first.',dc_cta:'Join the Discord',dc_note:'Free to join.',res_t:'Results from the Empire',res_lead:'Real wins from creators using these playbooks.',res_empty:'No results posted yet. Got a win? Send a screenshot and get featured here.',cont_t:'Continue where you left off',cont_btn:'Continue',bd_t:'Your badges',bd_1:'First lesson done',bd_2:'5 lessons done',bd_3:'15 lessons done',bd_4:'30 lessons done',bd_5:'All 15 blueprints finished',how_t:'How a key works',how_lead:'Three steps and you\'re in.',how_1t:'Ask for a key',how_1d:'Fill up the form below and send your request to the admin.',how_2t:'Get your key',how_2d:'The admin sends you a 16-character key after purchase.',how_3t:'Enter it and unlock',how_3d:'Open the Library, enter your key, and the full library opens.',cd_t:'Closing soon',cd_end:'This offer has closed — join the Discord for the next one.',stk_t:'Unlock the full library — from $7.93',bp_search_ph:'Search blueprints...',nw_t:'What\'s new',nw_lead:'The latest additions to the library.',nw_empty:'Nothing new yet — check back after the next drop.',copy_link:'Copy link',next_t:'Next up',av_t:'How to avail',av_lead:'Fill up the form, send it to the admin, and get your key.',av_s1t:'Fill up the form',av_s1d:'Choose your key length and enter your name and Discord username.',av_s2t:'Send your request',av_s2d:'Copy your request and paste it in the Discord — the admin sees it there.',av_s3t:'Pay and get your key',av_s3d:'The admin sends your 16-character key after payment. Enter it in the Library and everything opens.',av_name:'Your name',av_name_ph:'Type your name',av_dc:'Discord username',av_dc_ph:'Type your Discord username',av_note:'Note (optional)',av_note_ph:'Payment reference or message',av_send:'Send my request',av_err:'Fill in your name, Discord username, and key length first.',av_done:'Request ready — copy it and paste it in the Discord.',av_copy:'Copy request',av_open:'Open Discord',av_link:'No key yet? Fill up the form to get one.',av_cta:'Fill up the form',av_sum:'Your request',av_now:'Avail now',nav_pr:'Pricing'},
+de:{nav_bp:'Blaupausen',nav_lib:'Bibliothek',nav_acc:'Zugang',hero_eye:'Kostenlose Blaupausen · Automatisierung & Clipping',hero_h1:'Schritt-für-Schritt-Anleitungen für Creator, die clippen.',hero_sub:'Fünfzehn kostenlose Blaupausen, die dich beim Wachsen deines Kanals begleiten — vom ersten Short bis zu einem Posting-System, das wie von selbst läuft. Kein Schlüssel, keine Anmeldung. Öffne eine und leg los. Die volle Bibliothek mit Prompts, Tricks und Guides schaltest du mit einem Schlüssel frei.',hero_cta1:'Blaupausen ansehen',hero_cta2:'Volle Bibliothek freischalten',pill_bp:'15 Blaupausen',pill_courses:'12 Kurse',pill_guides:'3 Anfänger-Guides',pill_free:'Kostenlos · Keine Anmeldung',sec_bp_t:'Kostenlose Blaupausen',sec_bp_lead:'Fang heute an zu lernen. Kein Schlüssel und keine Anmeldung nötig. Die volle Bibliothek schaltest du mit einem Schlüssel frei.',sec_bp_fine:'15 Blaupausen: 12 Kurse und 3 Anfänger-Guides. Dein Fortschritt wird in diesem Browser gespeichert.',all:'Alle',ov_t:'Überblick',ov_lead:'Ein Schlüssel öffnet die komplette Bibliothek für die Dauer, die du wählst.',gl_len:'Zugangsdauern',gl_types:'Inhaltstypen',gl_inst:'Sofort',gl_act:'Aktivierung',gl_life:'Lebenslang',gl_opt:'Option verfügbar',cap_t:'Funktionen',cap_lead:'Die Bibliothek wächst, wenn der Administrator neues Material veröffentlicht.',cap_auto:'Automatisierung',cap_clip:'Clipping',cap_prompts:'Prompts',cap_tricks:'Tricks und Guides',acc_t:'Zugang',acc_lead:'Jeder Schlüssel gewährt denselben Zugang. Nur die Dauer unterscheidet sich.',acc_3d:'3 Tage',acc_1w:'1 Woche',acc_1m:'1 Monat',acc_life:'Lebenslang',acc_fine:'Schlüssel werden vom Administrator nach dem Kauf ausgestellt. Dein Zugangszeitraum beginnt, wenn du den Schlüssel zum ersten Mal aktivierst.',lib_back:'‹ Zurück zu den Blaupausen',lib_eye:'Automatisierungs- und Clipping-Anleitungen',lib_h1:'Eine private Bibliothek für Creator, die in großem Maßstab arbeiten.',lib_sub:'Prompts, Techniken und Guides, gepflegt vom Administrator. Zugang per Lizenzschlüssel.',kb_t:'Mitgliederzugang',kb_txt:'Gib den Schlüssel ein, den du beim Kauf erhalten hast.',kb_label:'Lizenzschlüssel',unlock:'Freischalten',own_q:'Inhaber? ',admin_open:'Admin-Zugang einrichten oder öffnen',tab_lib:'Bibliothek',tab_keys:'Schlüssel',tab_man:'Inhalte hinzufügen',search_ph:'Bibliothek durchsuchen',remove_key:'Schlüssel entfernen',lifetime_key:'Lebenslang-Schlüssel',r_back:'‹ Zurück',r_steps:'Schritt für Schritt',r_doc:'Gesamtes Dokument',r_sbs:'Schritt für Schritt',r_route:'Deine Route',r_done:'{n} von {m} Schritten erledigt',lessons:'Lektionen',keypoints:'Kernpunkte',min_u:'Min.',free_u:'Kostenlos',points:'Punkte',minread:'Min. Lesezeit',done_pill:'Erledigt',kp_h:'Kernpunkte',tick:'Einfach abhaken.',done_next:'Fertig, nächster Schritt',done_finish:'Fertig — Blaupause abschließen',start_course:'Kurs starten',of_done:'{n} von {m} erledigt',step_w:'Schritt',blueprint_w:'Blaupause',st_read:'LIES DAS',st_do:'MACH DAS JETZT',st_work:'ARBEITE DAS DURCH',copy_btn:'Kopieren',copied:'Kopiert',empty_lib:'Noch keine Inhalte. Schau bald wieder vorbei.',empty_admin:'Noch keine Inhalte. Öffne „Inhalte hinzufügen", um deinen ersten Prompt oder Trick zu posten.',empty_search:'Nichts passt zu dieser Suche.',foot_rights:'© 2026 Empire Syndicates. Alle Rechte vorbehalten.',foot_langnote:'Die Sprache ändert Menüs und Überschriften. Die Blaupausen bleiben auf Englisch.',stat_bp:'Blaupausen',stat_lessons:'Lektionen',stat_points:'Kernpunkte',stat_lens:'Schlüsseldauern',qz_t:'Wo sollst du anfangen?',qz_lead:'Beantworte 3 kurze Fragen und wir zeigen dir die richtige Blaupause.',qz_q1:'Wie neu bist du beim Clippen?',qz_q1a1:'Komplett neu',qz_q1a2:'Ich habe schon ein paar gepostet',qz_q1a3:'Ich mache das schon eine Weile',qz_q2:'Welche Plattform willst du wachsen lassen?',qz_q2a1:'YouTube',qz_q2a2:'Facebook',qz_q2a3:'TikTok',qz_q2a4:'Instagram',qz_q3:'Was willst du gerade am meisten?',qz_q3a1:'Mehr Aufrufe',qz_q3a2:'Ein System, das für mich postet',qz_q3a3:'Bessere Hooks und Retention',qz_res:'Fang hier an',qz_open:'Diese Blaupause öffnen',qz_again:'Quiz wiederholen',qz_back:'Zurück',faq_t:'Fragen, beantwortet',faq_lead:'Was Käufer fragen, bevor sie einen Schlüssel holen.',faq_q1:'Brauche ich Erfahrung?',faq_a1:'Nein. Die kostenlosen Blaupausen fangen bei null an — Kanal oder Seite einrichten, aufwärmen und nach Plan posten. Die Schlüssel-Bibliothek geht tiefer, aber alles bleibt Schritt für Schritt.',faq_q2:'Was schaltet ein Schlüssel frei?',faq_a2:'Die volle Bibliothek: jeder Prompt, Trick und Guide, den der Administrator veröffentlicht — für die Dauer deines Schlüssels: 1 Monat oder lebenslang.',faq_q3:'Wie benutze ich einen Schlüssel?',faq_a3:'Öffne die Bibliothek, gib deinen 16-stelligen Schlüssel ein, und du bist drin. Dein Zugang startet beim ersten Aktivieren — nicht am Kauftag.',faq_q4:'Was, wenn mein Schlüssel abläuft?',faq_a4:'Dein Zugang endet, wenn die Zeit um ist. Hol dir einen neuen Schlüssel vom Administrator — deine kostenlosen Blaupausen und dein Fortschritt bleiben.',faq_q5:'Ist das Kostenlose wirklich kostenlos?',faq_a5:'Ja. Alle 15 Blaupausen sind kostenlos, ohne Schlüssel und ohne Anmeldung. Der Schlüssel schaltet nur die extra Bibliothek frei.',faq_q6:'Wo kaufe ich einen Schlüssel?',faq_a6:'Füll das Formular auf dieser Seite aus und schick deine Anfrage auf Discord. Der Administrator stellt deinen Schlüssel nach der Zahlung aus.',cmp_t:'Kostenlos vs. Schlüssel',cmp_lead:'Fang kostenlos an. Schalte den Rest frei, wenn du bereit bist.',cmp_free:'Kostenlos',cmp_free_sub:'Kein Schlüssel, keine Anmeldung.',cmp_key:'Mit Schlüssel',cmp_key_sub:'Die volle Bibliothek.',cmp_r1:'15 kostenlose Blaupausen',cmp_r2:'Prompts, Tricks und Guides',cmp_r3:'Neue Inhalte, sobald sie erscheinen',cmp_r4:'2 Schlüsseldauern',cmp_r5:'Fortschritt wird in diesem Browser gespeichert',pr_t:'Wähl deinen Schlüssel',pr_lead:'Ein Schlüssel. Die ganze Bibliothek. Wähl, wie lange er gilt.',pr_cta:'Auf Discord holen',pr_price:'Preis auf Discord',pr_best:'Bester Wert',pr_f1:'Voller Zugang zur Bibliothek',pr_f2:'Neue Inhalte inklusive',pr_f3:'Startet, wenn du ihn aktivierst',pr_note:'Füll das Formular unten aus, um einen Schlüssel zu bekommen — der Administrator schickt ihn dir nach der Zahlung.',dc_t:'Tritt dem Empire bei',dc_lead:'Die Community, in der Clipper teilen, was funktioniert — Wins, Tests und neue Playbooks zuerst.',dc_cta:'Discord beitreten',dc_note:'Kostenloser Beitritt.',res_t:'Ergebnisse aus dem Empire',res_lead:'Echte Wins von Creatorn, die diese Playbooks nutzen.',res_empty:'Noch keine Ergebnisse gepostet. Hast du einen Win? Schick einen Screenshot und werde hier gezeigt.',cont_t:'Weiter, wo du aufgehört hast',cont_btn:'Weiter',bd_t:'Deine Abzeichen',bd_1:'Erste Lektion geschafft',bd_2:'5 Lektionen geschafft',bd_3:'15 Lektionen geschafft',bd_4:'30 Lektionen geschafft',bd_5:'Alle 15 Blaupausen fertig',how_t:'So funktioniert ein Schlüssel',how_lead:'Drei Schritte, und du bist drin.',how_1t:'Frag nach einem Schlüssel',how_1d:'Füll das Formular unten aus und schick deine Anfrage an den Administrator.',how_2t:'Hol dir deinen Schlüssel',how_2d:'Der Administrator schickt dir nach dem Kauf einen 16-stelligen Schlüssel.',how_3t:'Gib ihn ein und schalte frei',how_3d:'Öffne die Bibliothek, gib deinen Schlüssel ein, und die volle Bibliothek öffnet sich.',cd_t:'Endet bald',cd_end:'Dieses Angebot ist vorbei — komm auf den Discord für das nächste.',stk_t:'Volle Bibliothek freischalten — ab $7.93',bp_search_ph:'Blaupausen durchsuchen …',nw_t:'Was ist neu',nw_lead:'Die neuesten Ergänzungen der Bibliothek.',nw_empty:'Noch nichts Neues — schau nach dem nächsten Drop wieder vorbei.',copy_link:'Link kopieren',next_t:'Als Nächstes',av_t:'So bekommst du einen Schlüssel',av_lead:'Füll das Formular aus, schick es an den Administrator und hol dir deinen Schlüssel.',av_s1t:'Formular ausfüllen',av_s1d:'Wähl deine Schlüsseldauer und gib deinen Namen und Discord-Namen ein.',av_s2t:'Anfrage senden',av_s2d:'Kopiere deine Anfrage und füge sie im Discord ein — der Administrator sieht sie dort.',av_s3t:'Bezahlen und Schlüssel erhalten',av_s3d:'Der Administrator schickt dir nach der Zahlung deinen 16-stelligen Schlüssel. Gib ihn in der Bibliothek ein und alles öffnet sich.',av_name:'Dein Name',av_name_ph:'Gib deinen Namen ein',av_dc:'Discord-Name',av_dc_ph:'Gib deinen Discord-Namen ein',av_note:'Notiz (optional)',av_note_ph:'Zahlungsreferenz oder Nachricht',av_send:'Anfrage senden',av_err:'Füll zuerst deinen Namen, Discord-Namen und die Schlüsseldauer aus.',av_done:'Anfrage fertig — kopiere sie und füge sie im Discord ein.',av_copy:'Anfrage kopieren',av_open:'Discord öffnen',av_link:'Noch keinen Schlüssel? Füll das Formular aus, um einen zu bekommen.',av_cta:'Formular ausfüllen',av_sum:'Deine Anfrage',av_now:'Jetzt holen',nav_pr:'Preise'},
+es:{nav_bp:'Guías',nav_lib:'Biblioteca',nav_acc:'Acceso',hero_eye:'Guías gratuitas · Automatización y clips',hero_h1:'Guías paso a paso para creadores que hacen clips.',hero_sub:'Quince guías gratuitas que te acompañan a hacer crecer un canal — desde tu primer Short hasta un sistema de publicación que funciona solo. Sin clave, sin registro. Abre una y empieza. La biblioteca completa de prompts, trucos y guías se desbloquea con una clave.',hero_cta1:'Ver las guías',hero_cta2:'Desbloquear la biblioteca completa',pill_bp:'15 guías',pill_courses:'12 cursos',pill_guides:'3 guías para principiantes',pill_free:'Gratis · Sin registro',sec_bp_t:'Guías gratuitas',sec_bp_lead:'Empieza a aprender hoy. Sin clave ni registro. La biblioteca completa se desbloquea con una clave.',sec_bp_fine:'15 guías: 12 cursos y 3 guías para principiantes. Tu progreso se guarda en este navegador.',all:'Todas',ov_t:'Resumen',ov_lead:'Una clave abre la biblioteca completa por el tiempo que elijas.',gl_len:'Duraciones de acceso',gl_types:'Tipos de contenido',gl_inst:'Instantánea',gl_act:'Activación',gl_life:'De por vida',gl_opt:'Opción disponible',cap_t:'Funciones',cap_lead:'La biblioteca crece cuando el administrador publica material nuevo.',cap_auto:'Automatización',cap_clip:'Clips',cap_prompts:'Prompts',cap_tricks:'Trucos y guías',acc_t:'Acceso',acc_lead:'Todas las claves dan el mismo acceso. Solo cambia la duración.',acc_3d:'3 días',acc_1w:'1 semana',acc_1m:'1 mes',acc_life:'De por vida',acc_fine:'Las claves las emite el administrador después de la compra. Tu periodo de acceso empieza cuando activas la clave por primera vez.',lib_back:'‹ Volver a las guías',lib_eye:'Guías de automatización y clips',lib_h1:'Una biblioteca privada para creadores que trabajan a gran escala.',lib_sub:'Prompts, técnicas y guías mantenidas por el administrador. Acceso con clave de licencia.',kb_t:'Acceso de miembros',kb_txt:'Escribe la clave que recibiste al comprar.',kb_label:'Clave de licencia',unlock:'Desbloquear',own_q:'¿Eres el dueño? ',admin_open:'Configurar o abrir el acceso de administrador',tab_lib:'Biblioteca',tab_keys:'Claves',tab_man:'Añadir contenido',search_ph:'Buscar en la biblioteca',remove_key:'Quitar clave',lifetime_key:'Clave de por vida',r_back:'‹ Atrás',r_steps:'Paso a paso',r_doc:'Documento completo',r_sbs:'Paso a paso',r_route:'Tu ruta',r_done:'{n} de {m} pasos completados',lessons:'lecciones',keypoints:'puntos clave',min_u:'min',free_u:'Gratis',points:'puntos',minread:'min de lectura',done_pill:'Hecho',kp_h:'Puntos clave',tick:'Solo márcalo.',done_next:'Listo, siguiente paso',done_finish:'Listo — terminar la guía',start_course:'Empezar curso',of_done:'{n} de {m} completados',step_w:'Paso',blueprint_w:'guía',st_read:'LEE ESTO',st_do:'HAZLO AHORA',st_work:'TRABÁJALO',copy_btn:'Copiar',copied:'Copiado',empty_lib:'Aún no hay contenido. Vuelve pronto.',empty_admin:'Aún no hay contenido. Abre «Añadir contenido» para publicar tu primer prompt o truco.',empty_search:'Nada coincide con esa búsqueda.',foot_rights:'© 2026 Empire Syndicates. Todos los derechos reservados.',foot_langnote:'El idioma cambia los menús y los títulos. Las guías siguen en inglés.',stat_bp:'guías',stat_lessons:'lecciones',stat_points:'puntos clave',stat_lens:'duraciones de clave',qz_t:'¿Por dónde empiezas?',qz_lead:'Responde 3 preguntas rápidas y te señalamos la guía correcta.',qz_q1:'¿Qué tan nuevo eres en los clips?',qz_q1a1:'Totalmente nuevo',qz_q1a2:'Ya publiqué algunos',qz_q1a3:'Llevo un tiempo en esto',qz_q2:'¿Qué plataforma quieres hacer crecer?',qz_q2a1:'YouTube',qz_q2a2:'Facebook',qz_q2a3:'TikTok',qz_q2a4:'Instagram',qz_q3:'¿Qué quieres más ahora mismo?',qz_q3a1:'Más vistas',qz_q3a2:'Un sistema que publique por mí',qz_q3a3:'Mejores hooks y retención',qz_res:'Empieza aquí',qz_open:'Abrir esta guía',qz_again:'Repetir el quiz',qz_back:'Atrás',faq_t:'Preguntas, respondidas',faq_lead:'Lo que preguntan los compradores antes de conseguir una clave.',faq_q1:'¿Necesito experiencia?',faq_a1:'No. Las guías gratuitas empiezan desde cero — crear un canal o página, calentarlo y publicar con horario. La biblioteca con clave va más a fondo, pero todo sigue paso a paso.',faq_q2:'¿Qué desbloquea una clave?',faq_a2:'La biblioteca completa: cada prompt, truco y guía que publique el administrador, por la duración de tu clave: 1 mes o de por vida.',faq_q3:'¿Cómo uso una clave?',faq_a3:'Abre la biblioteca, escribe tu clave de 16 caracteres y entras. Tu acceso empieza la primera vez que la activas, no el día que la compras.',faq_q4:'¿Qué pasa si mi clave vence?',faq_a4:'Tu acceso termina cuando se acaba el tiempo. Consigue una clave nueva del administrador — tus guías gratuitas y tu progreso se quedan.',faq_q5:'¿Lo gratis es de verdad gratis?',faq_a5:'Sí. Las 15 guías son gratis, sin clave y sin registro. La clave solo desbloquea la biblioteca extra.',faq_q6:'¿Dónde compro una clave?',faq_a6:'Llena el formulario de esta página y envía tu solicitud en Discord. El administrador emite tu clave después del pago.',cmp_t:'Gratis vs. clave',cmp_lead:'Empieza gratis. Desbloquea el resto cuando estés listo.',cmp_free:'Gratis',cmp_free_sub:'Sin clave, sin registro.',cmp_key:'Con clave',cmp_key_sub:'La biblioteca completa.',cmp_r1:'15 guías gratuitas',cmp_r2:'Prompts, trucos y guías',cmp_r3:'Contenido nuevo en cuanto se publica',cmp_r4:'2 duraciones de clave',cmp_r5:'Progreso guardado en este navegador',pr_t:'Elige tu clave',pr_lead:'Una clave. Toda la biblioteca. Elige cuánto dura.',pr_cta:'Conseguirla en Discord',pr_price:'Precio en Discord',pr_best:'Mejor valor',pr_f1:'Acceso completo a la biblioteca',pr_f2:'Contenido nuevo incluido',pr_f3:'Empieza cuando la activas',pr_note:'Llena el formulario de abajo para conseguirla — el administrador te envía tu clave después del pago.',dc_t:'Únete al Empire',dc_lead:'La comunidad donde los clippers comparten lo que funciona — victorias, pruebas y nuevas guías primero.',dc_cta:'Unirse al Discord',dc_note:'Unirse es gratis.',res_t:'Resultados del Empire',res_lead:'Victorias reales de creadores que usan estas guías.',res_empty:'Aún no hay resultados publicados. ¿Tienes una victoria? Envía una captura y aparece aquí.',cont_t:'Continúa donde lo dejaste',cont_btn:'Continuar',bd_t:'Tus insignias',bd_1:'Primera lección completada',bd_2:'5 lecciones completadas',bd_3:'15 lecciones completadas',bd_4:'30 lecciones completadas',bd_5:'Las 15 guías terminadas',how_t:'Cómo funciona una clave',how_lead:'Tres pasos y estás dentro.',how_1t:'Pide una clave',how_1d:'Llena el formulario de abajo y envía tu solicitud al administrador.',how_2t:'Recibe tu clave',how_2d:'El administrador te envía una clave de 16 caracteres después de la compra.',how_3t:'Escríbela y desbloquea',how_3d:'Abre la biblioteca, escribe tu clave y se abre toda la biblioteca.',cd_t:'Termina pronto',cd_end:'Esta oferta terminó — entra al Discord para la próxima.',stk_t:'Desbloquear la biblioteca completa — desde $7.93',bp_search_ph:'Buscar guías…',nw_t:'Novedades',nw_lead:'Las últimas incorporaciones a la biblioteca.',nw_empty:'Nada nuevo por ahora — vuelve después del próximo lanzamiento.',copy_link:'Copiar enlace',next_t:'A continuación',av_t:'Cómo conseguir tu clave',av_lead:'Llena el formulario, envíalo al administrador y recibe tu clave.',av_s1t:'Llena el formulario',av_s1d:'Elige la duración de tu clave y escribe tu nombre y tu usuario de Discord.',av_s2t:'Envía tu solicitud',av_s2d:'Copia tu solicitud y pégala en el Discord — el administrador la verá allí.',av_s3t:'Paga y recibe tu clave',av_s3d:'El administrador te envía tu clave de 16 caracteres después del pago. Escríbela en la biblioteca y todo se abre.',av_name:'Tu nombre',av_name_ph:'Escribe tu nombre',av_dc:'Usuario de Discord',av_dc_ph:'Escribe tu usuario de Discord',av_note:'Nota (opcional)',av_note_ph:'Referencia de pago o mensaje',av_send:'Enviar mi solicitud',av_err:'Primero llena tu nombre, tu usuario de Discord y la duración de la clave.',av_done:'Solicitud lista — cópiala y pégala en el Discord.',av_copy:'Copiar solicitud',av_open:'Abrir Discord',av_link:'¿Aún no tienes clave? Llena el formulario para conseguir una.',av_cta:'Llenar el formulario',av_sum:'Tu solicitud',av_now:'Conseguir ahora',nav_pr:'Precios'},
+fr:{nav_bp:'Guides',nav_lib:'Bibliothèque',nav_acc:'Accès',hero_eye:'Guides gratuits · Automatisation et clips',hero_h1:'Des guides pas à pas pour les créateurs qui clippent.',hero_sub:'Quinze guides gratuits qui vous accompagnent pour faire grandir une chaîne — du premier Short à un système de publication qui tourne tout seul. Sans clé, sans inscription. Ouvrez-en un et commencez. La bibliothèque complète de prompts, astuces et guides se débloque avec une clé.',hero_cta1:'Voir les guides',hero_cta2:'Débloquer toute la bibliothèque',pill_bp:'15 guides',pill_courses:'12 cours',pill_guides:'3 guides débutants',pill_free:'Gratuit · Sans inscription',sec_bp_t:'Guides gratuits',sec_bp_lead:'Commencez à apprendre aujourd\'hui. Sans clé ni inscription. La bibliothèque complète se débloque avec une clé.',sec_bp_fine:'15 guides : 12 cours et 3 guides débutants. Votre progression est enregistrée dans ce navigateur.',all:'Tout',ov_t:'Aperçu',ov_lead:'Une clé ouvre toute la bibliothèque pour la durée de votre choix.',gl_len:'Durées d\'accès',gl_types:'Types de contenu',gl_inst:'Instantanée',gl_act:'Activation',gl_life:'À vie',gl_opt:'Option disponible',cap_t:'Fonctionnalités',cap_lead:'La bibliothèque grandit quand l\'administrateur publie du nouveau contenu.',cap_auto:'Automatisation',cap_clip:'Clips',cap_prompts:'Prompts',cap_tricks:'Astuces et guides',acc_t:'Accès',acc_lead:'Chaque clé donne le même accès. Seule la durée change.',acc_3d:'3 jours',acc_1w:'1 semaine',acc_1m:'1 mois',acc_life:'À vie',acc_fine:'Les clés sont émises par l\'administrateur après l\'achat. Votre période d\'accès commence quand vous activez la clé pour la première fois.',lib_back:'‹ Retour aux guides',lib_eye:'Guides d\'automatisation et de clips',lib_h1:'Une bibliothèque privée pour les créateurs qui travaillent à grande échelle.',lib_sub:'Prompts, techniques et guides gérés par l\'administrateur. Accès par clé de licence.',kb_t:'Accès membres',kb_txt:'Entrez la clé reçue lors de l\'achat.',kb_label:'Clé de licence',unlock:'Débloquer',own_q:'Propriétaire ? ',admin_open:'Configurer ou ouvrir l\'accès admin',tab_lib:'Bibliothèque',tab_keys:'Clés',tab_man:'Ajouter du contenu',search_ph:'Rechercher dans la bibliothèque',remove_key:'Retirer la clé',lifetime_key:'Clé à vie',r_back:'‹ Retour',r_steps:'Étape par étape',r_doc:'Document complet',r_sbs:'Pas à pas',r_route:'Votre parcours',r_done:'{n} étapes sur {m} terminées',lessons:'leçons',keypoints:'points clés',min_u:'min',free_u:'Gratuit',points:'points',minread:'min de lecture',done_pill:'Terminé',kp_h:'Points clés',tick:'Cochez, c\'est tout.',done_next:'Terminé, étape suivante',done_finish:'Terminé — finir le guide',start_course:'Commencer le cours',of_done:'{n} sur {m} terminés',step_w:'Étape',blueprint_w:'guide',st_read:'LISEZ CECI',st_do:'FAITES-LE MAINTENANT',st_work:'TRAVAILLEZ-LE',copy_btn:'Copier',copied:'Copié',empty_lib:'Aucun contenu pour le moment. Revenez bientôt.',empty_admin:'Aucun contenu pour le moment. Ouvrez « Ajouter du contenu » pour publier votre premier prompt ou astuce.',empty_search:'Rien ne correspond à cette recherche.',foot_rights:'© 2026 Empire Syndicates. Tous droits réservés.',foot_langnote:'La langue change les menus et les titres. Les guides restent en anglais.',stat_bp:'guides',stat_lessons:'leçons',stat_points:'points clés',stat_lens:'durées de clé',qz_t:'Par où commencer ?',qz_lead:'Répondez à 3 questions rapides et on vous indique le bon guide.',qz_q1:'À quel point débutez-vous en clips ?',qz_q1a1:'Totalement nouveau',qz_q1a2:'J\'ai déjà posté quelques-uns',qz_q1a3:'Ça fait un moment que je m\'y mets',qz_q2:'Quelle plateforme voulez-vous faire grandir ?',qz_q2a1:'YouTube',qz_q2a2:'Facebook',qz_q2a3:'TikTok',qz_q2a4:'Instagram',qz_q3:'Que voulez-vous le plus en ce moment ?',qz_q3a1:'Plus de vues',qz_q3a2:'Un système qui poste pour moi',qz_q3a3:'De meilleurs hooks et plus de rétention',qz_res:'Commencez ici',qz_open:'Ouvrir ce guide',qz_again:'Refaire le quiz',qz_back:'Retour',faq_t:'Questions, réponses',faq_lead:'Ce que les acheteurs demandent avant de prendre une clé.',faq_q1:'Faut-il de l\'expérience ?',faq_a1:'Non. Les guides gratuits partent de zéro — créer une chaîne ou une page, la réchauffer et poster selon un planning. La bibliothèque avec clé va plus loin, mais tout reste pas à pas.',faq_q2:'Qu\'est-ce qu\'une clé débloque ?',faq_a2:'Toute la bibliothèque : chaque prompt, astuce et guide publié par l\'administrateur, pour la durée de votre clé : 1 mois ou à vie.',faq_q3:'Comment utiliser une clé ?',faq_a3:'Ouvrez la bibliothèque, entrez votre clé de 16 caractères et vous êtes dedans. Votre accès commence à la première activation, pas le jour de l\'achat.',faq_q4:'Et si ma clé expire ?',faq_a4:'Votre accès s\'arrête quand le temps est écoulé. Prenez une nouvelle clé auprès de l\'administrateur — vos guides gratuits et votre progression restent.',faq_q5:'Le gratuit est-il vraiment gratuit ?',faq_a5:'Oui. Les 15 guides sont gratuits, sans clé ni inscription. La clé ne débloque que la bibliothèque supplémentaire.',faq_q6:'Où acheter une clé ?',faq_a6:'Remplissez le formulaire sur cette page et envoyez votre demande sur Discord. L\'administrateur émet votre clé après le paiement.',cmp_t:'Gratuit vs clé',cmp_lead:'Commencez gratuitement. Débloquez le reste quand vous êtes prêt.',cmp_free:'Gratuit',cmp_free_sub:'Sans clé, sans inscription.',cmp_key:'Avec clé',cmp_key_sub:'Toute la bibliothèque.',cmp_r1:'15 guides gratuits',cmp_r2:'Prompts, astuces et guides',cmp_r3:'Nouveau contenu dès sa publication',cmp_r4:'2 durées de clé',cmp_r5:'Progression enregistrée dans ce navigateur',pr_t:'Choisissez votre clé',pr_lead:'Une clé. Toute la bibliothèque. Choisissez sa durée.',pr_cta:'L\'avoir sur Discord',pr_price:'Prix sur Discord',pr_best:'Meilleure valeur',pr_f1:'Accès complet à la bibliothèque',pr_f2:'Nouveau contenu inclus',pr_f3:'Démarre quand vous l\'activez',pr_note:'Remplissez le formulaire ci-dessous pour en obtenir une — l\'administrateur vous envoie votre clé après le paiement.',dc_t:'Rejoignez l\'Empire',dc_lead:'La communauté où les clippers partagent ce qui marche — victoires, tests et nouveaux guides en premier.',dc_cta:'Rejoindre le Discord',dc_note:'Gratuit à rejoindre.',res_t:'Résultats de l\'Empire',res_lead:'De vraies victoires de créateurs qui utilisent ces guides.',res_empty:'Aucun résultat publié pour le moment. Une victoire à partager ? Envoyez une capture et apparaissez ici.',cont_t:'Reprenez où vous vous étiez arrêté',cont_btn:'Continuer',bd_t:'Vos badges',bd_1:'Première leçon terminée',bd_2:'5 leçons terminées',bd_3:'15 leçons terminées',bd_4:'30 leçons terminées',bd_5:'Les 15 guides terminés',how_t:'Comment fonctionne une clé',how_lead:'Trois étapes et vous êtes dedans.',how_1t:'Demandez une clé',how_1d:'Remplissez le formulaire ci-dessous et envoyez votre demande à l\'administrateur.',how_2t:'Recevez votre clé',how_2d:'L\'administrateur vous envoie une clé de 16 caractères après l\'achat.',how_3t:'Entrez-la et débloquez',how_3d:'Ouvrez la bibliothèque, entrez votre clé et toute la bibliothèque s\'ouvre.',cd_t:'Bientôt terminé',cd_end:'Cette offre est terminée — rejoignez le Discord pour la prochaine.',stk_t:'Débloquer toute la bibliothèque — à partir de $7.93',bp_search_ph:'Rechercher un guide…',nw_t:'Nouveautés',nw_lead:'Les derniers ajouts à la bibliothèque.',nw_empty:'Rien de nouveau pour le moment — revenez après le prochain ajout.',copy_link:'Copier le lien',next_t:'Ensuite',av_t:'Comment obtenir votre clé',av_lead:'Remplissez le formulaire, envoyez-le à l\'administrateur et recevez votre clé.',av_s1t:'Remplissez le formulaire',av_s1d:'Choisissez la durée de votre clé et entrez votre nom et votre pseudo Discord.',av_s2t:'Envoyez votre demande',av_s2d:'Copiez votre demande et collez-la dans le Discord — l\'administrateur la verra là-bas.',av_s3t:'Payez et recevez votre clé',av_s3d:'L\'administrateur vous envoie votre clé de 16 caractères après le paiement. Entrez-la dans la bibliothèque et tout s\'ouvre.',av_name:'Votre nom',av_name_ph:'Écrivez votre nom',av_dc:'Pseudo Discord',av_dc_ph:'Écrivez votre pseudo Discord',av_note:'Note (facultatif)',av_note_ph:'Référence de paiement ou message',av_send:'Envoyer ma demande',av_err:'Remplissez d\'abord votre nom, votre pseudo Discord et la durée de la clé.',av_done:'Demande prête — copiez-la et collez-la dans le Discord.',av_copy:'Copier la demande',av_open:'Ouvrir Discord',av_link:'Pas encore de clé ? Remplissez le formulaire pour en obtenir une.',av_cta:'Remplir le formulaire',av_sum:'Votre demande',av_now:'Obtenir maintenant',nav_pr:'Prix'},
+id:{nav_bp:'Panduan',nav_lib:'Pustaka',nav_acc:'Akses',hero_eye:'Panduan gratis · Otomatisasi & klip',hero_h1:'Panduan langkah demi langkah untuk kreator yang membuat klip.',hero_sub:'Lima belas panduan gratis yang membantumu mengembangkan channel — dari Short pertamamu sampai sistem posting yang berjalan sendiri. Tanpa kunci, tanpa daftar. Buka satu dan mulai. Pustaka lengkap berisi prompt, trik, dan panduan terbuka dengan kunci.',hero_cta1:'Lihat panduan',hero_cta2:'Buka pustaka lengkap',pill_bp:'15 panduan',pill_courses:'12 kursus',pill_guides:'3 panduan pemula',pill_free:'Gratis · Tanpa daftar',sec_bp_t:'Panduan gratis',sec_bp_lead:'Mulai belajar hari ini. Tanpa kunci dan tanpa daftar. Pustaka lengkap terbuka dengan kunci.',sec_bp_fine:'15 panduan: 12 kursus dan 3 panduan pemula. Progresmu tersimpan di browser ini.',all:'Semua',ov_t:'Ringkasan',ov_lead:'Satu kunci membuka seluruh pustaka selama waktu yang kamu pilih.',gl_len:'Durasi akses',gl_types:'Jenis konten',gl_inst:'Instan',gl_act:'Aktivasi',gl_life:'Seumur hidup',gl_opt:'Opsi tersedia',cap_t:'Fitur',cap_lead:'Pustaka bertambah saat administrator menerbitkan materi baru.',cap_auto:'Otomatisasi',cap_clip:'Klip',cap_prompts:'Prompt',cap_tricks:'Trik dan panduan',acc_t:'Akses',acc_lead:'Semua kunci memberi akses yang sama. Hanya durasinya yang berbeda.',acc_3d:'3 hari',acc_1w:'1 minggu',acc_1m:'1 bulan',acc_life:'Seumur hidup',acc_fine:'Kunci diterbitkan oleh administrator setelah pembelian. Masa aksesmu dimulai saat pertama kali mengaktifkan kunci.',lib_back:'‹ Kembali ke panduan',lib_eye:'Panduan otomatisasi dan klip',lib_h1:'Pustaka pribadi untuk kreator yang bekerja dalam skala besar.',lib_sub:'Prompt, teknik, dan panduan yang dikelola administrator. Akses dengan kunci lisensi.',kb_t:'Akses anggota',kb_txt:'Masukkan kunci yang kamu terima saat pembelian.',kb_label:'Kunci lisensi',unlock:'Buka kunci',own_q:'Pemilik? ',admin_open:'Atur atau buka akses admin',tab_lib:'Pustaka',tab_keys:'Kunci',tab_man:'Tambah konten',search_ph:'Cari di pustaka',remove_key:'Hapus kunci',lifetime_key:'Kunci seumur hidup',r_back:'‹ Kembali',r_steps:'Langkah demi langkah',r_doc:'Dokumen lengkap',r_sbs:'Langkah demi langkah',r_route:'Rutemu',r_done:'{n} dari {m} langkah selesai',lessons:'pelajaran',keypoints:'poin kunci',min_u:'mnt',free_u:'Gratis',points:'poin',minread:'mnt baca',done_pill:'Selesai',kp_h:'Poin kunci',tick:'Centang saja.',done_next:'Selesai, langkah berikutnya',done_finish:'Selesai — akhiri panduan',start_course:'Mulai kursus',of_done:'{n} dari {m} selesai',step_w:'Langkah',blueprint_w:'panduan',st_read:'BACA INI',st_do:'LAKUKAN SEKARANG',st_work:'KERJAKAN',copy_btn:'Salin',copied:'Disalin',empty_lib:'Belum ada konten. Cek lagi nanti.',empty_admin:'Belum ada konten. Buka «Tambah konten» untuk memposting prompt atau trik pertamamu.',empty_search:'Tidak ada yang cocok dengan pencarian itu.',foot_rights:'© 2026 Empire Syndicates. Hak cipta dilindungi.',foot_langnote:'Bahasa mengubah menu dan judul. Panduannya tetap dalam bahasa Inggris.',stat_bp:'panduan',stat_lessons:'pelajaran',stat_points:'poin kunci',stat_lens:'durasi kunci',qz_t:'Mulai dari mana?',qz_lead:'Jawab 3 pertanyaan cepat dan kami tunjukkan panduan yang tepat.',qz_q1:'Seberapa baru kamu di dunia klip?',qz_q1a1:'Benar-benar baru',qz_q1a2:'Sudah pernah posting beberapa',qz_q1a3:'Sudah lama berkecimpung',qz_q2:'Platform apa yang mau kamu kembangkan?',qz_q2a1:'YouTube',qz_q2a2:'Facebook',qz_q2a3:'TikTok',qz_q2a4:'Instagram',qz_q3:'Apa yang paling kamu inginkan sekarang?',qz_q3a1:'Lebih banyak views',qz_q3a2:'Sistem yang posting untukku',qz_q3a3:'Hook dan retensi yang lebih baik',qz_res:'Mulai di sini',qz_open:'Buka panduan ini',qz_again:'Ulangi kuis',qz_back:'Kembali',faq_t:'Pertanyaan, terjawab',faq_lead:'Hal yang ditanyakan pembeli sebelum mengambil kunci.',faq_q1:'Apakah saya butuh pengalaman?',faq_a1:'Tidak. Panduan gratis dimulai dari nol — membuat channel atau Page, menghangatkannya, dan posting sesuai jadwal. Pustaka berkunci lebih dalam, tapi semuanya tetap langkah demi langkah.',faq_q2:'Apa yang dibuka oleh kunci?',faq_a2:'Seluruh pustaka: setiap prompt, trik, dan panduan yang diterbitkan administrator, selama durasi kuncimu: 1 bulan atau seumur hidup.',faq_q3:'Bagaimana cara memakai kunci?',faq_a3:'Buka Pustaka, masukkan kunci 16 karaktermu, dan kamu masuk. Aksesmu dimulai saat pertama kali mengaktifkannya, bukan di hari pembelian.',faq_q4:'Bagaimana jika kunciku kedaluwarsa?',faq_a4:'Aksesmu berakhir saat waktunya habis. Ambil kunci baru dari administrator — panduan gratis dan progresmu tetap ada.',faq_q5:'Apakah yang gratis benar-benar gratis?',faq_a5:'Ya. Semua 15 panduan gratis, tanpa kunci dan tanpa daftar. Kunci hanya membuka pustaka tambahan.',faq_q6:'Di mana saya membeli kunci?',faq_a6:'Isi formulir di halaman ini dan kirim permintaanmu di Discord. Administrator menerbitkan kuncimu setelah pembayaran.',cmp_t:'Gratis vs kunci',cmp_lead:'Mulai gratis. Buka sisanya saat kamu siap.',cmp_free:'Gratis',cmp_free_sub:'Tanpa kunci, tanpa daftar.',cmp_key:'Dengan kunci',cmp_key_sub:'Seluruh pustaka.',cmp_r1:'15 panduan gratis',cmp_r2:'Prompt, trik, dan panduan',cmp_r3:'Konten baru begitu diterbitkan',cmp_r4:'2 durasi kunci',cmp_r5:'Progres tersimpan di browser ini',pr_t:'Pilih kuncimu',pr_lead:'Satu kunci. Seluruh pustaka. Pilih berapa lama berlakunya.',pr_cta:'Dapatkan di Discord',pr_price:'Harga di Discord',pr_best:'Nilai terbaik',pr_f1:'Akses penuh ke pustaka',pr_f2:'Konten baru termasuk',pr_f3:'Mulai saat kamu mengaktifkannya',pr_note:'Isi formulir di bawah untuk mendapatkannya — administrator mengirimkan kuncimu setelah pembayaran.',dc_t:'Gabung ke Empire',dc_lead:'Komunitas tempat para clipper berbagi apa yang berhasil — kemenangan, tes, dan panduan baru duluan.',dc_cta:'Gabung ke Discord',dc_note:'Gratis untuk gabung.',res_t:'Hasil dari Empire',res_lead:'Kemenangan nyata dari kreator yang memakai panduan ini.',res_empty:'Belum ada hasil yang diposting. Punya kemenangan? Kirim screenshot dan tampil di sini.',cont_t:'Lanjutkan dari tempatmu berhenti',cont_btn:'Lanjutkan',bd_t:'Lencanamu',bd_1:'Pelajaran pertama selesai',bd_2:'5 pelajaran selesai',bd_3:'15 pelajaran selesai',bd_4:'30 pelajaran selesai',bd_5:'Semua 15 panduan selesai',how_t:'Cara kerja kunci',how_lead:'Tiga langkah dan kamu masuk.',how_1t:'Minta kunci',how_1d:'Isi formulir di bawah dan kirim permintaanmu ke administrator.',how_2t:'Terima kuncimu',how_2d:'Administrator mengirimkan kunci 16 karakter setelah pembelian.',how_3t:'Masukkan dan buka',how_3d:'Buka Pustaka, masukkan kuncimu, dan seluruh pustaka terbuka.',cd_t:'Segera berakhir',cd_end:'Penawaran ini sudah berakhir — gabung ke Discord untuk penawaran berikutnya.',stk_t:'Buka pustaka lengkap — mulai $7.93',bp_search_ph:'Cari panduan…',nw_t:'Yang baru',nw_lead:'Tambahan terbaru di pustaka.',nw_empty:'Belum ada yang baru — cek lagi setelah rilisan berikutnya.',copy_link:'Salin tautan',next_t:'Berikutnya',av_t:'Cara mendapatkan kunci',av_lead:'Isi formulir, kirim ke administrator, dan dapatkan kuncimu.',av_s1t:'Isi formulir',av_s1d:'Pilih durasi kuncimu dan masukkan nama serta username Discord-mu.',av_s2t:'Kirim permintaanmu',av_s2d:'Salin permintaanmu dan tempel di Discord — administrator akan melihatnya di sana.',av_s3t:'Bayar dan terima kuncimu',av_s3d:'Administrator mengirimkan kunci 16 karaktermu setelah pembayaran. Masukkan di Pustaka dan semuanya terbuka.',av_name:'Namamu',av_name_ph:'Tulis namamu',av_dc:'Username Discord',av_dc_ph:'Tulis username Discord-mu',av_note:'Catatan (opsional)',av_note_ph:'Referensi pembayaran atau pesan',av_send:'Kirim permintaanku',av_err:'Isi dulu nama, username Discord, dan durasi kuncimu.',av_done:'Permintaan siap — salin dan tempel di Discord.',av_copy:'Salin permintaan',av_open:'Buka Discord',av_link:'Belum punya kunci? Isi formulir untuk mendapatkannya.',av_cta:'Isi formulir',av_sum:'Permintaanmu',av_now:'Dapatkan sekarang',nav_pr:'Harga'},
+pt:{nav_bp:'Guias',nav_lib:'Biblioteca',nav_acc:'Acesso',hero_eye:'Guias grátis · Automação e clipes',hero_h1:'Guias passo a passo para criadores que fazem clipes.',hero_sub:'Quinze guias grátis que te acompanham a crescer um canal — do primeiro Short até um sistema de postagem que funciona sozinho. Sem chave, sem cadastro. Abra um e comece. A biblioteca completa de prompts, truques e guias desbloqueia com uma chave.',hero_cta1:'Ver os guias',hero_cta2:'Desbloquear a biblioteca completa',pill_bp:'15 guias',pill_courses:'12 cursos',pill_guides:'3 guias para iniciantes',pill_free:'Grátis · Sem cadastro',sec_bp_t:'Guias grátis',sec_bp_lead:'Comece a aprender hoje. Sem chave e sem cadastro. A biblioteca completa desbloqueia com uma chave.',sec_bp_fine:'15 guias: 12 cursos e 3 guias para iniciantes. Seu progresso fica salvo neste navegador.',all:'Todos',ov_t:'Resumo',ov_lead:'Uma chave abre a biblioteca completa pelo tempo que você escolher.',gl_len:'Durações de acesso',gl_types:'Tipos de conteúdo',gl_inst:'Instantânea',gl_act:'Ativação',gl_life:'Vitalício',gl_opt:'Opção disponível',cap_t:'Recursos',cap_lead:'A biblioteca cresce quando o administrador publica material novo.',cap_auto:'Automação',cap_clip:'Clipes',cap_prompts:'Prompts',cap_tricks:'Truques e guias',acc_t:'Acesso',acc_lead:'Toda chave dá o mesmo acesso. Só a duração muda.',acc_3d:'3 dias',acc_1w:'1 semana',acc_1m:'1 mês',acc_life:'Vitalício',acc_fine:'As chaves são emitidas pelo administrador após a compra. Seu período de acesso começa quando você ativa a chave pela primeira vez.',lib_back:'‹ Voltar aos guias',lib_eye:'Guias de automação e clipes',lib_h1:'Uma biblioteca privada para criadores que trabalham em larga escala.',lib_sub:'Prompts, técnicas e guias mantidos pelo administrador. Acesso por chave de licença.',kb_t:'Acesso de membros',kb_txt:'Digite a chave recebida na compra.',kb_label:'Chave de licença',unlock:'Desbloquear',own_q:'É o dono? ',admin_open:'Configurar ou abrir o acesso de administrador',tab_lib:'Biblioteca',tab_keys:'Chaves',tab_man:'Adicionar conteúdo',search_ph:'Buscar na biblioteca',remove_key:'Remover chave',lifetime_key:'Chave vitalícia',r_back:'‹ Voltar',r_steps:'Passo a passo',r_doc:'Documento completo',r_sbs:'Passo a passo',r_route:'Sua rota',r_done:'{n} de {m} passos concluídos',lessons:'lições',keypoints:'pontos-chave',min_u:'min',free_u:'Grátis',points:'pontos',minread:'min de leitura',done_pill:'Feito',kp_h:'Pontos-chave',tick:'É só marcar.',done_next:'Pronto, próximo passo',done_finish:'Pronto — terminar o guia',start_course:'Começar curso',of_done:'{n} de {m} concluídos',step_w:'Passo',blueprint_w:'guia',st_read:'LEIA ISTO',st_do:'FAÇA AGORA',st_work:'TRABALHE NISSO',copy_btn:'Copiar',copied:'Copiado',empty_lib:'Ainda não há conteúdo. Volte em breve.',empty_admin:'Ainda não há conteúdo. Abra «Adicionar conteúdo» para postar seu primeiro prompt ou truque.',empty_search:'Nada corresponde a essa busca.',foot_rights:'© 2026 Empire Syndicates. Todos os direitos reservados.',foot_langnote:'O idioma muda os menus e os títulos. Os guias continuam em inglês.',stat_bp:'guias',stat_lessons:'lições',stat_points:'pontos-chave',stat_lens:'durações de chave',qz_t:'Por onde começar?',qz_lead:'Responda 3 perguntas rápidas e apontamos o guia certo.',qz_q1:'Quão novo você é em clipes?',qz_q1a1:'Totalmente novo',qz_q1a2:'Já postei alguns',qz_q1a3:'Já estou nisso há um tempo',qz_q2:'Qual plataforma você quer crescer?',qz_q2a1:'YouTube',qz_q2a2:'Facebook',qz_q2a3:'TikTok',qz_q2a4:'Instagram',qz_q3:'O que você mais quer agora?',qz_q3a1:'Mais visualizações',qz_q3a2:'Um sistema que poste por mim',qz_q3a3:'Melhores hooks e retenção',qz_res:'Comece aqui',qz_open:'Abrir este guia',qz_again:'Refazer o quiz',qz_back:'Voltar',faq_t:'Perguntas, respondidas',faq_lead:'O que os compradores perguntam antes de pegar uma chave.',faq_q1:'Preciso de experiência?',faq_a1:'Não. Os guias grátis começam do zero — criar um canal ou página, aquecê-lo e postar com horário. A biblioteca com chave vai mais fundo, mas tudo continua passo a passo.',faq_q2:'O que uma chave desbloqueia?',faq_a2:'A biblioteca completa: cada prompt, truque e guia publicado pelo administrador, pela duração da sua chave: 1 mês ou vitalício.',faq_q3:'Como uso uma chave?',faq_a3:'Abra a biblioteca, digite sua chave de 16 caracteres e entre. Seu acesso começa na primeira ativação, não no dia da compra.',faq_q4:'E se minha chave expirar?',faq_a4:'Seu acesso termina quando o tempo acaba. Pegue uma chave nova com o administrador — seus guias grátis e seu progresso ficam.',faq_q5:'O grátis é mesmo grátis?',faq_a5:'Sim. Os 15 guias são grátis, sem chave e sem cadastro. A chave só desbloqueia a biblioteca extra.',faq_q6:'Onde compro uma chave?',faq_a6:'Preencha o formulário nesta página e envie sua solicitação no Discord. O administrador emite sua chave após o pagamento.',cmp_t:'Grátis vs. chave',cmp_lead:'Comece grátis. Desbloqueie o resto quando estiver pronto.',cmp_free:'Grátis',cmp_free_sub:'Sem chave, sem cadastro.',cmp_key:'Com chave',cmp_key_sub:'A biblioteca completa.',cmp_r1:'15 guias grátis',cmp_r2:'Prompts, truques e guias',cmp_r3:'Conteúdo novo assim que é publicado',cmp_r4:'2 durações de chave',cmp_r5:'Progresso salvo neste navegador',pr_t:'Escolha sua chave',pr_lead:'Uma chave. Toda a biblioteca. Escolha quanto tempo ela dura.',pr_cta:'Pegar no Discord',pr_price:'Preço no Discord',pr_best:'Melhor valor',pr_f1:'Acesso completo à biblioteca',pr_f2:'Conteúdo novo incluído',pr_f3:'Começa quando você ativa',pr_note:'Preencha o formulário abaixo para conseguir a sua — o administrador envia sua chave após o pagamento.',dc_t:'Entre para o Empire',dc_lead:'A comunidade onde os clippers compartilham o que funciona — vitórias, testes e novos guias primeiro.',dc_cta:'Entrar no Discord',dc_note:'Grátis para entrar.',res_t:'Resultados do Empire',res_lead:'Vitórias reais de criadores que usam estes guias.',res_empty:'Ainda não há resultados publicados. Tem uma vitória? Envie uma captura e apareça aqui.',cont_t:'Continue de onde parou',cont_btn:'Continuar',bd_t:'Suas insígnias',bd_1:'Primeira lição concluída',bd_2:'5 lições concluídas',bd_3:'15 lições concluídas',bd_4:'30 lições concluídas',bd_5:'Os 15 guias concluídos',how_t:'Como funciona uma chave',how_lead:'Três passos e você está dentro.',how_1t:'Peça uma chave',how_1d:'Preencha o formulário abaixo e envie sua solicitação ao administrador.',how_2t:'Receba sua chave',how_2d:'O administrador envia uma chave de 16 caracteres após a compra.',how_3t:'Digite e desbloqueie',how_3d:'Abra a biblioteca, digite sua chave e toda a biblioteca se abre.',cd_t:'Termina em breve',cd_end:'Esta oferta terminou — entre no Discord para a próxima.',stk_t:'Desbloquear a biblioteca completa — a partir de $7.93',bp_search_ph:'Buscar guias…',nw_t:'Novidades',nw_lead:'As adições mais recentes à biblioteca.',nw_empty:'Nada novo por enquanto — volte após o próximo lançamento.',copy_link:'Copiar link',next_t:'A seguir',av_t:'Como conseguir sua chave',av_lead:'Preencha o formulário, envie ao administrador e receba sua chave.',av_s1t:'Preencha o formulário',av_s1d:'Escolha a duração da sua chave e digite seu nome e usuário do Discord.',av_s2t:'Envie sua solicitação',av_s2d:'Copie sua solicitação e cole no Discord — o administrador a verá lá.',av_s3t:'Pague e receba sua chave',av_s3d:'O administrador envia sua chave de 16 caracteres após o pagamento. Digite-a na biblioteca e tudo se abre.',av_name:'Seu nome',av_name_ph:'Digite seu nome',av_dc:'Usuário do Discord',av_dc_ph:'Digite seu usuário do Discord',av_note:'Nota (opcional)',av_note_ph:'Referência de pagamento ou mensagem',av_send:'Enviar minha solicitação',av_err:'Primeiro preencha seu nome, seu usuário do Discord e a duração da chave.',av_done:'Solicitação pronta — copie e cole no Discord.',av_copy:'Copiar solicitação',av_open:'Abrir Discord',av_link:'Ainda não tem chave? Preencha o formulário para conseguir uma.',av_cta:'Preencher o formulário',av_sum:'Sua solicitação',av_now:'Conseguir agora',nav_pr:'Preços'},
+ru:{nav_bp:'Гайды',nav_lib:'Библиотека',nav_acc:'Доступ',hero_eye:'Бесплатные гайды · Автоматизация и клипы',hero_h1:'Пошаговые гайды для авторов, которые делают клипы.',hero_sub:'Пятнадцать бесплатных гайдов, которые помогут вырастить канал — от первого Short до системы публикаций, которая работает сама. Без ключа, без регистрации. Откройте любой и начните. Полная библиотека промптов, приёмов и гайдов открывается по ключу.',hero_cta1:'Смотреть гайды',hero_cta2:'Открыть всю библиотеку',pill_bp:'15 гайдов',pill_courses:'12 курсов',pill_guides:'3 гайда для новичков',pill_free:'Бесплатно · Без регистрации',sec_bp_t:'Бесплатные гайды',sec_bp_lead:'Начните учиться сегодня. Без ключа и без регистрации. Полная библиотека открывается по ключу.',sec_bp_fine:'15 гайдов: 12 курсов и 3 гайда для новичков. Ваш прогресс сохраняется в этом браузере.',all:'Все',ov_t:'Обзор',ov_lead:'Один ключ открывает всю библиотеку на выбранный вами срок.',gl_len:'Сроки доступа',gl_types:'Типы контента',gl_inst:'Мгновенно',gl_act:'Активация',gl_life:'Навсегда',gl_opt:'Есть опция',cap_t:'Возможности',cap_lead:'Библиотека растёт, когда администратор публикует новые материалы.',cap_auto:'Автоматизация',cap_clip:'Клипы',cap_prompts:'Промпты',cap_tricks:'Приёмы и гайды',acc_t:'Доступ',acc_lead:'Каждый ключ даёт одинаковый доступ. Отличается только срок.',acc_3d:'3 дня',acc_1w:'1 неделя',acc_1m:'1 месяц',acc_life:'Навсегда',acc_fine:'Ключи выдаёт администратор после покупки. Период доступа начинается, когда вы впервые активируете ключ.',lib_back:'‹ Назад к гайдам',lib_eye:'Гайды по автоматизации и клипам',lib_h1:'Частная библиотека для авторов, работающих в большом масштабе.',lib_sub:'Промпты, техники и гайды от администратора. Доступ по лицензионному ключу.',kb_t:'Доступ участника',kb_txt:'Введите ключ, полученный при покупке.',kb_label:'Лицензионный ключ',unlock:'Разблокировать',own_q:'Владелец? ',admin_open:'Настроить или открыть доступ администратора',tab_lib:'Библиотека',tab_keys:'Ключи',tab_man:'Добавить контент',search_ph:'Поиск по библиотеке',remove_key:'Удалить ключ',lifetime_key:'Ключ навсегда',r_back:'‹ Назад',r_steps:'Шаг за шагом',r_doc:'Полный документ',r_sbs:'Шаг за шагом',r_route:'Ваш маршрут',r_done:'{n} из {m} шагов выполнено',lessons:'уроков',keypoints:'ключевых пунктов',min_u:'мин',free_u:'Бесплатно',points:'пунктов',minread:'мин чтения',done_pill:'Готово',kp_h:'Ключевые пункты',tick:'Просто отметьте.',done_next:'Готово, следующий шаг',done_finish:'Готово — завершить гайд',start_course:'Начать курс',of_done:'{n} из {m} выполнено',step_w:'Шаг',blueprint_w:'гайд',st_read:'ПРОЧИТАЙТЕ',st_do:'СДЕЛАЙТЕ СЕЙЧАС',st_work:'ПРОРАБОТАЙТЕ',copy_btn:'Копировать',copied:'Скопировано',empty_lib:'Пока нет контента. Загляните позже.',empty_admin:'Пока нет контента. Откройте «Добавить контент», чтобы опубликовать первый промпт или приём.',empty_search:'Ничего не найдено.',foot_rights:'© 2026 Empire Syndicates. Все права защищены.',foot_langnote:'Язык меняет меню и заголовки. Гайды остаются на английском.',stat_bp:'гайдов',stat_lessons:'уроков',stat_points:'ключевых пунктов',stat_lens:'сроков ключа',qz_t:'С чего начать?',qz_lead:'Ответьте на 3 быстрых вопроса, и мы покажем нужный гайд.',qz_q1:'Насколько вы новичок в клипах?',qz_q1a1:'Совсем новичок',qz_q1a2:'Уже публиковал несколько',qz_q1a3:'Занимаюсь этим уже давно',qz_q2:'Какую платформу вы растите?',qz_q2a1:'YouTube',qz_q2a2:'Facebook',qz_q2a3:'TikTok',qz_q2a4:'Instagram',qz_q3:'Что вам нужно больше всего сейчас?',qz_q3a1:'Больше просмотров',qz_q3a2:'Систему, которая постит за меня',qz_q3a3:'Лучшие хуки и удержание',qz_res:'Начните здесь',qz_open:'Открыть этот гайд',qz_again:'Пройти тест заново',qz_back:'Назад',faq_t:'Вопросы и ответы',faq_lead:'Что покупатели спрашивают перед получением ключа.',faq_q1:'Нужен ли опыт?',faq_a1:'Нет. Бесплатные гайды начинают с нуля — создание канала или страницы, прогрев и публикации по расписанию. Библиотека по ключу идёт глубже, но всё так же шаг за шагом.',faq_q2:'Что открывает ключ?',faq_a2:'Всю библиотеку: каждый промпт, приём и гайд, опубликованный администратором, на срок вашего ключа: 1 месяц или навсегда.',faq_q3:'Как пользоваться ключом?',faq_a3:'Откройте библиотеку, введите свой 16-значный ключ — и вы внутри. Доступ начинается с первой активации, а не в день покупки.',faq_q4:'Что будет, если ключ истечёт?',faq_a4:'Доступ закончится, когда выйдет время. Возьмите новый ключ у администратора — бесплатные гайды и прогресс останутся.',faq_q5:'Бесплатное — правда бесплатно?',faq_a5:'Да. Все 15 гайдов бесплатны, без ключа и без регистрации. Ключ открывает только дополнительную библиотеку.',faq_q6:'Где купить ключ?',faq_a6:'Заполните форму на этой странице и отправьте запрос в Discord. Администратор выдаст ключ после оплаты.',cmp_t:'Бесплатно и по ключу',cmp_lead:'Начните бесплатно. Откройте остальное, когда будете готовы.',cmp_free:'Бесплатно',cmp_free_sub:'Без ключа, без регистрации.',cmp_key:'По ключу',cmp_key_sub:'Вся библиотека.',cmp_r1:'15 бесплатных гайдов',cmp_r2:'Промпты, приёмы и гайды',cmp_r3:'Новый контент сразу после публикации',cmp_r4:'2 срока ключа',cmp_r5:'Прогресс сохраняется в этом браузере',pr_t:'Выберите ключ',pr_lead:'Один ключ. Вся библиотека. Выберите, на сколько он действует.',pr_cta:'Получить в Discord',pr_price:'Цена в Discord',pr_best:'Лучшая цена',pr_f1:'Полный доступ к библиотеке',pr_f2:'Новый контент включён',pr_f3:'Начинается при активации',pr_note:'Заполните форму ниже, чтобы получить ключ — администратор пришлёт его после оплаты.',dc_t:'Присоединяйтесь к Empire',dc_lead:'Сообщество, где клипперы делятся тем, что работает, — победами, тестами и новыми гайдами первыми.',dc_cta:'Войти в Discord',dc_note:'Вход бесплатный.',res_t:'Результаты Empire',res_lead:'Настоящие победы авторов, которые пользуются этими гайдами.',res_empty:'Пока нет опубликованных результатов. Есть победа? Пришлите скриншот — и появитесь здесь.',cont_t:'Продолжите с того места, где остановились',cont_btn:'Продолжить',bd_t:'Ваши значки',bd_1:'Первый урок пройден',bd_2:'5 уроков пройдено',bd_3:'15 уроков пройдено',bd_4:'30 уроков пройдено',bd_5:'Все 15 гайдов пройдены',how_t:'Как работает ключ',how_lead:'Три шага — и вы внутри.',how_1t:'Попросите ключ',how_1d:'Заполните форму ниже и отправьте запрос администратору.',how_2t:'Получите ключ',how_2d:'Администратор пришлёт 16-значный ключ после покупки.',how_3t:'Введите его и откройте',how_3d:'Откройте библиотеку, введите ключ — и вся библиотека откроется.',cd_t:'Скоро закроется',cd_end:'Это предложение закрыто — зайдите в Discord за следующим.',stk_t:'Открыть всю библиотеку — от $7.93',bp_search_ph:'Поиск по гайдам…',nw_t:'Что нового',nw_lead:'Последние пополнения библиотеки.',nw_empty:'Пока ничего нового — загляните после следующего пополнения.',copy_link:'Скопировать ссылку',next_t:'Далее',av_t:'Как получить ключ',av_lead:'Заполните форму, отправьте её администратору и получите ключ.',av_s1t:'Заполните форму',av_s1d:'Выберите срок ключа и введите имя и имя пользователя в Discord.',av_s2t:'Отправьте запрос',av_s2d:'Скопируйте запрос и вставьте его в Discord — администратор увидит его там.',av_s3t:'Оплатите и получите ключ',av_s3d:'Администратор пришлёт 16-значный ключ после оплаты. Введите его в библиотеке — и всё откроется.',av_name:'Ваше имя',av_name_ph:'Введите ваше имя',av_dc:'Имя в Discord',av_dc_ph:'Введите имя в Discord',av_note:'Примечание (необязательно)',av_note_ph:'Ссылка на платёж или сообщение',av_send:'Отправить запрос',av_err:'Сначала заполните имя, имя в Discord и срок ключа.',av_done:'Запрос готов — скопируйте его и вставьте в Discord.',av_copy:'Скопировать запрос',av_open:'Открыть Discord',av_link:'Ещё нет ключа? Заполните форму, чтобы получить его.',av_cta:'Заполнить форму',av_sum:'Ваш запрос',av_now:'Получить сейчас',nav_pr:'Цены'}
+};
+function t(k){var d=I18N[LANG]||I18N.en;return d[k]!==undefined?d[k]:(I18N.en[k]!==undefined?I18N.en[k]:k)}
+function tf(k,a,b){return t(k).split('{n}').join(a).split('{m}').join(b)}
+function renderLangs(){
+  var w=$('#langs');if(!w)return;
+  w.innerHTML=LANGS.map(function(l){return '<button type="button" data-lang="'+l.c+'" class="'+(l.c===LANG?'on':'')+'">'+l.f+' '+l.n+(l.c===LANG?' ✓':'')+'</button>'}).join('');
+}
+function applyLang(){
+  document.documentElement.lang=LANG;
+  document.querySelectorAll('[data-i18n]').forEach(function(el){el.textContent=t(el.dataset.i18n)});
+  document.querySelectorAll('[data-i18n-ph]').forEach(function(el){el.placeholder=t(el.dataset.i18nPh)});
+  renderLangs();
+  renderFaq();renderPricing();renderResults();
+  renderWhatsNew();renderCountdown();renderTeaser();
+  renderAvailLen();selectAvail(AV_LEN);
+  document.querySelectorAll('.popwords').forEach(function(el){delete el.dataset.split;el.classList.remove('in');splitWords(el)});
+  watchPops();
+}
+
+/* ---------- platform banners ---------- */
+function platBanner(tag){
+  if(tag==='YouTube')return '<span class="pban"><svg viewBox="0 0 24 24" fill-rule="evenodd" aria-hidden="true"><path fill="#fff" d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>YouTube</span>';
+  if(tag==='TikTok')return '<span class="pban"><svg viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="8.2" cy="18" rx="3.6" ry="3" transform="rotate(-18 8.2 18)" fill="#fff"/><rect x="10.9" y="3.5" width="2.1" height="14.5" fill="#fff"/><path d="M13 3.5 20.5 5.8 19.6 8.6 13 6.4Z" fill="#fff"/></svg>TikTok</span>';
+  if(tag==='Facebook')return '<span class="pban"><span class="plogo">f</span>Facebook</span>';
+  return '<span class="pban"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="6" cy="6.5" r="2.6" stroke="#fff" stroke-width="1.9"/><circle cx="6" cy="17.5" r="2.6" stroke="#fff" stroke-width="1.9"/><path d="M8.2 8.2 20 19.5M8.2 15.8 20 4.5" stroke="#fff" stroke-width="1.9" stroke-linecap="round"/></svg>Clipping</span>';
+}
+
+/* ---------- scroll pop-up ---------- */
+function splitWords(el){
+  if(el.dataset.split)return;
+  el.dataset.split='1';
+  var words=el.textContent.trim().split(/\s+/);
+  el.innerHTML=words.map(function(w,i){return '<span class="w" style="transition-delay:'+(i*0.05)+'s">'+esc(w)+'</span>'}).join(' ');
+}
+var popIO=('IntersectionObserver' in window)?new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');en.target.style.transitionDelay='';popIO.unobserve(en.target)}})},{threshold:.12,rootMargin:'0px 0px -6% 0px'}):null;
+function watchPops(root){
+  var scope=root||document;
+  scope.querySelectorAll('.popwords').forEach(function(el){splitWords(el)});
+  scope.querySelectorAll('.pop,.popcard').forEach(function(el){
+    if(el.classList.contains('in'))return;
+    if(popIO)popIO.observe(el);else el.classList.add('in');
+  });
+  setTimeout(function(){
+    scope.querySelectorAll('.pop:not(.in),.popcard:not(.in)').forEach(function(el){var r=el.getBoundingClientRect();if(r.top<innerHeight&&r.bottom>0)el.classList.add('in')});
+  },1200);
+}
+document.addEventListener('click',function(e){
+  var lg=e.target.closest('#langs button');
+  if(lg){LANG=lg.dataset.lang;lsSetStr('es_lang',LANG);applyLang()}
+});
+
+/* ---------- new sections ---------- */
+var DISCORD_URL='https://discord.gg/nnP67YMHE';
+document.addEventListener('click',function(e){
+  var f=e.target.closest('[data-faq]');
+  if(f){f.closest('.fq').classList.toggle('open')}
+});
+/* faq */
+var FAQ_KEYS=[['faq_q1','faq_a1'],['faq_q2','faq_a2'],['faq_q3','faq_a3'],['faq_q4','faq_a4'],['faq_q5','faq_a5'],['faq_q6','faq_a6']];
+function renderFaq(){
+  var w=$('#faqList');if(!w)return;
+  w.innerHTML=FAQ_KEYS.map(function(k,i){return '<div class="fq"><button type="button" data-faq="'+i+'"><span>'+esc(t(k[0]))+'</span><span class="pm">+</span></button><div class="fa">'+esc(t(k[1]))+'</div></div>'}).join('');
+}
+/* pricing */
+var PRICES={'1m':'$7.93','life':'$12.70'};
+var PR_DUR=[['1m','acc_1m'],['life','acc_life']];
+function renderPricing(){
+  var w=$('#priceGrid');if(!w)return;
+  w.innerHTML=PR_DUR.map(function(p){
+    return '<div class="pr'+(p[0]==='life'?' hot':'')+'"><span class="dur">'+t(p[1])+'</span>'+(p[0]==='life'?'<span class="badge" style="align-self:flex-start">'+t('pr_best')+'</span>':'')+'<span class="pv"><b>'+PRICES[p[0]]+'</b></span><ul><li>✓ '+t('pr_f1')+'</li><li>✓ '+t('pr_f2')+'</li><li>✓ '+t('pr_f3')+'</li></ul><a class="btn" href="#avail" data-avail="'+p[0]+'">'+t('av_now')+'</a></div>';
+  }).join('');
+}
+/* results */
+function renderResults(){
+  var w=$('#resList');if(!w)return;
+  var list=items.filter(function(c){return c.type==='Proof'});
+  w.innerHTML=list.length?list.map(function(c){return '<div class="res"><h3>'+esc(c.title)+'</h3><p>'+esc(c.body)+'</p></div>'}).join(''):'<p class="empty">'+esc(t('res_empty'))+'</p>';
+}
+/* v7: continue + badges */
+/* v7: what's new */
+function renderWhatsNew(){
+  var w=$('#nwList');if(!w)return;
+  var list=items.filter(function(c){return c.type!=='Proof'}).slice().sort(function(a,b){return (b.createdAt||0)-(a.createdAt||0)}).slice(0,5);
+  w.innerHTML=list.length?list.map(function(c){return '<div class="nw"><span class="tag">'+esc(c.type)+'</span><h3>'+esc(c.title)+'</h3></div>'}).join(''):'<p class="empty">'+esc(t('nw_empty'))+'</p>';
+}
+/* v7: countdown */
+function renderCountdown(){
+  var sec=$('#cdSec');if(!sec)return;
+  var end=settings.cdEnd?new Date(settings.cdEnd):null;
+  if(!end||isNaN(end.getTime())){sec.hidden=true;return}
+  sec.hidden=false;
+  $('#cdLab').textContent=settings.cdLabel||t('cd_t');
+  tickCd();
+}
+function tickCd(){
+  var sec=$('#cdSec');if(!sec||sec.hidden)return;
+  var end=new Date(settings.cdEnd);var ms=end-Date.now();
+  var tw=$('#cdTime'),en=$('#cdEnd');
+  if(ms<=0){if(tw)tw.hidden=true;if(en)en.hidden=false;return}
+  if(tw)tw.hidden=false;if(en)en.hidden=true;
+  var d=Math.floor(ms/864e5),h=Math.floor(ms%864e5/36e5),m=Math.floor(ms%36e5/6e4),s=Math.floor(ms%6e4/1e3);
+  if(tw)tw.innerHTML='<span><b>'+d+'</b>d</span><span><b>'+h+'</b>h</span><span><b>'+m+'</b>m</span><span><b>'+s+'</b>s</span>';
+}
+/* v7: teaser */
+function renderTeaser(){
+  var w=$('#teaser');if(!w)return;
+  var u=(settings.tzUrl||'').trim();
+  if(!u){w.hidden=true;w.innerHTML='';return}
+  var m=u.match(/(?:youtube\.com\/(?:watch\?[^#]*v=|shorts\/|embed\/)|youtu\.be\/)([\w-]{6,})/);
+  if(m){w.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+m[1]+'" title="Teaser" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'}
+  else if(/\.(mp4|webm|mov)(\?|#|$)/i.test(u)){w.innerHTML='<video controls preload="metadata" src="'+esc(u)+'"></video>'}
+  else{w.innerHTML='<iframe src="'+esc(u)+'" title="Teaser" frameborder="0" allowfullscreen></iframe>'}
+  w.hidden=false;
+}
+/* v7: sticky bar */
+var stickyOff=false;
+function updateSticky(){
+  var bar=$('#sticky');if(!bar)return;
+  var rd=$('#reader');
+  var show=!stickyOff&&!unlocked&&!$('#homeView').hidden&&(!rd||rd.hidden)&&$('#adminView').hidden&&window.scrollY>600;
+  bar.hidden=!show;
+  document.body.classList.toggle('has-sticky',show);
+}
+/* v7: admin settings */
+function fillSettings(){
+  var d=$('#cdDate');if(d)d.value=settings.cdEnd||'';
+  var l=$('#cdLabel');if(l)l.value=settings.cdLabel||'';
+  var z=$('#tzUrl');if(z)z.value=settings.tzUrl||'';
+}
+/* v8: avail form */
+var AV_LEN='1m';
+function avDurName(){return AV_LEN==='life'?t('acc_life'):t('acc_1m')}
+function renderAvailLen(){
+  document.querySelectorAll('#avLen [data-avlen]').forEach(function(b){var s=b.querySelector('span');if(s)s.textContent=PRICES[b.dataset.avlen]||''});
+}
+function selectAvail(d){
+  AV_LEN=d;
+  document.querySelectorAll('#avLen [data-avlen]').forEach(function(b){b.classList.toggle('on',b.dataset.avlen===d)});
+  var s=$('#avSel');if(s)s.textContent=avDurName()+' — '+PRICES[d];
+}
+
+/* ---------- start ---------- */
+var started=false;
+function startSite(){
+  if(started)return;started=true;
+  applyLang();
+  fillSettings();
+  setInterval(tickCd,1000);
+  window.addEventListener('scroll',updateSticky,{passive:true});
+  updateSticky();
+  if(access){
+    var kd=keys.find(function(x){return x.code===access.code});
+    if(kd&&!kd.revoked&&left(access.at,access.dur)>0){unlock()}
+    else{access=null;lsSet('es_access',null)}
+  }
+  chrome();chips();lib();man();keysR();
+}
+(function(){
+  if(!sitePassHash||isAdmin||siteOpen){enterSite()}
+  else{var sga=$('#sgAdmin');if(sga&&sga.closest('p'))sga.closest('p').hidden=!adminHash;setTimeout(function(){var p=$('#sgPass');if(p)p.focus()},50)}
+})();
+})();
+</script>
+</body>
+</html>
