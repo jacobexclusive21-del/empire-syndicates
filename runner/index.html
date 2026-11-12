@@ -64,7 +64,7 @@
   .price span{font-size:13px;color:#6b6455}
   .price.best{background:#2a2a26;color:#f4efe6}
   .price.best span{color:#c9c2b0}
-  .price .tag-best{display:inline-block;margin-top:10px;font-size:11px;font-weight:900;letter-spacing:2px;background:#f4efe6;color:#2a2a26;border-radius:999px;padding:4px 10px}
+  .price .tag-best{display:block;width:max-content;margin:10px auto 0;font-size:11px;font-weight:900;letter-spacing:2px;background:#f4efe6;color:#2a2a26;border-radius:999px;padding:4px 10px}
   .cta{display:inline-block;background:#2a2a26;color:#f4efe6;font-weight:900;font-size:17px;letter-spacing:2px;text-decoration:none;border-radius:999px;padding:15px 40px}
   .keys-note{margin-top:16px;font-size:13px;color:#6b6455}
   .keys-note a{color:#2a2a26;font-weight:700}
@@ -149,10 +149,11 @@
       <div>Mentoring</div><div>Weekly updated meta captions</div>
     </div>
     <div class="prices">
-      <div class="price"><b>1 MONTH</b><span class="amt">$7.93</span><span>Full library · 1 month</span></div>
-      <div class="price best"><b>LIFETIME</b><span class="amt">$12.70</span><span>Full library · forever</span><span class="tag-best">BEST VALUE</span></div>
+      <div class="price"><b>MONTHLY</b><span class="amt">$4.69</span><span>Full library · 1 month</span></div>
+      <div class="price"><b>QUARTERLY</b><span class="amt">$14.10</span><span>Full library · 3 months</span></div>
+      <div class="price best"><b>YEARLY</b><span class="amt">$31.35</span><span>Full library · 1 year</span><span class="tag-best">BEST VALUE</span></div>
     </div>
-    <a class="cta" id="keyCta" href="#avail">GET YOUR KEY — FROM $7.93</a>
+    <a class="cta" id="keyCta" href="#avail">GET YOUR KEY — FROM $4.69</a>
     <p class="keys-note">or <a href="https://drive.google.com/file/d/10XMbDNJRPlGuzI5bsWZQmWyNQOycJ7vt/view?usp=drivesdk" target="_blank" rel="noopener">see the full library page</a></p>
   </section>
   <section class="avail" id="avail">
@@ -163,8 +164,9 @@
     <form id="availForm" hidden>
       <label>Key
         <select id="avKey">
-          <option value="1 Month — $7.93">1 Month — $7.93</option>
-          <option value="Lifetime — $12.70">Lifetime — $12.70</option>
+          <option value="Monthly — $4.69">Monthly — $4.69</option>
+          <option value="Quarterly — $14.10">Quarterly — $14.10</option>
+          <option value="Yearly — $31.35">Yearly — $31.35</option>
         </select>
       </label>
       <label>Your name
